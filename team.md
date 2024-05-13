@@ -37,6 +37,9 @@ In terms of technical skills, the programming languages and frameworks I have us
 
 Looking forward to collaborating with all of you!
 
+### Fehmi Baltaci
+Hi All, I'm Fehmi. I live in Melrose, MA and work in Weston, MA at a FinTech company. I've been working as a QA Automation Engineer and recently started working on UI development in my team. I'm pursuing my master's degree from BU in Software Development. I'm really excited about the project and looking forward to getting to know everyone better!
+
 
 
 
