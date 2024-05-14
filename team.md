@@ -46,3 +46,12 @@ Hi All, I'm Fehmi. I live in Melrose, MA and work in Weston, MA at a FinTech com
 ### Brenna Mahn
 
 Hi team, I'm Brenna. I'm based in New Orleans, LA. I have been working as an app developer for the past few years after a career switch from finance. I've taken several courses towards my Master's in Software Development here at BU including a Software Quality and Testing course where I worked with another team to create a job searching webapp and a Android development course where I built a pet budgeting app. My main strengths are in cross platform and native app development but I've also worked with Python, Java, Javascript, CSS, and HTML.
+
+### Savien Brooke Love
+
+Hi team!
+
+My name is Savien, but I go by Brooke. I am based in a small town in Georgia called Valdosta. I have been a Full-Stack Developer for about three years now. I am in my last course to get my Master's in Software Development. I am really excited to start on this project. My tech stack includes React, Javascript, Java, CSS, SCSS, MySQL, NoSQL and more! I am really excited to see how it goes. When I am not being a new wife or a pet mom my passions outside of coding are tattooing, cooking, volleyball, adventuring, and photography! Excited to work with all of you.
+
+XOXO,
+Brooke
