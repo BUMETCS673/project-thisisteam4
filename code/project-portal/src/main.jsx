@@ -4,6 +4,7 @@ import App from './App.jsx'
 import Dashboard from "./pages/Dasboard/Dashboard.jsx"
 import NotFound from "./pages/NotFound/NotFound.jsx"
 import './index.css'
+import Landing from './pages/Landing/Landing.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -12,10 +13,10 @@ const router = createBrowserRouter([
     element: <App/>,
     errorElement:<NotFound/>,
     children: [
-      // {
-      //   index: true,
-      //   element: <Landing />, //landing page route will be "/"
-      // },
+      {
+        index: true,
+        element: <Landing />, //landing page route will be "/"
+      },
       {
         path: 'dashboard',
         element: <Dashboard />, //"/dashboard"
