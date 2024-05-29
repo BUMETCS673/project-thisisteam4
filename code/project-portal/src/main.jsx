@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Dashboard from "./pages/Dasboard/Dashboard.jsx"
+import Project from "./pages/ProjectCreation/ProjectCreationForm.jsx"
 import NotFound from "./pages/NotFound/NotFound.jsx"
 import './index.css'
 import Landing from './pages/Landing/Landing.jsx'
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       //   path: 'project/:id',
       //   element: <Project />, //"/project/:id"
       // }, 
+      {
+           path: 'project/',
+           element: <Project />, //"/project/"
+         }, 
 
     ]
   }
