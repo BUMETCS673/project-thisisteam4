@@ -12,12 +12,17 @@ const Dashboard= () => {
     renderProjectCards()
     return(
         <main>
+<<<<<<< HEAD
             <SearchBar/>
             {/* total amount of projects on page */}
             <h2>({cards.length}) Projects</h2>
             <section className="projects-container">
                 {cards}
             </section>
+=======
+        <h1>Dashboard Route</h1>
+        <a>Go Back to Home</a>
+>>>>>>> 6e95790 (project creation form)
         </main>
     )
 } 
