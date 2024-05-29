@@ -26,10 +26,10 @@ npm -v
 Follow these steps to set up and run the project:
 
 1. Clone the Repository
-First clone the repository on your local machine.
+First clone the repository on your local machine. Then change directory in to your local project folder.
 
-```git clone https://github.com/your-username/project-thisisteam4.git
-cd your-repo-name
+```git clone git@github.com:BUMETCS673/project-thisisteam4.git
+cd project-thisisteam4
 ```
 
 2.Install Dependancies
