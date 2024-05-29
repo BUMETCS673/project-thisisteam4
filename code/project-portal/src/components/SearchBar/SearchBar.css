@@ -1,0 +1,9 @@
+form {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+form input {
+    width: 70%;
+    border-radius: 20px;
+}
