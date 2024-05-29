@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import Dashboard from "./pages/Dasboard/Dashboard.jsx"
+import Dashboard from "./pages/Dashboard/Dashboard.jsx"
 import NotFound from "./pages/NotFound/NotFound.jsx"
+import Project from "./pages/ProjectCreation/ProjectCreationForm.jsx"
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       //   path: 'project/:id',
       //   element: <Project />, //"/project/:id"
       // }, 
+      {
+           path: 'createproject',
+           element: <Project />, 
+         }, 
 
     ]
   }
