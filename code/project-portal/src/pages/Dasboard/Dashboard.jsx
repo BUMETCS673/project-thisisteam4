@@ -13,6 +13,7 @@ const Dashboard= () => {
     return(
         <main>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <SearchBar/>
             {/* total amount of projects on page */}
             <h2>({cards.length}) Projects</h2>
@@ -20,6 +21,8 @@ const Dashboard= () => {
                 {cards}
             </section>
 =======
+=======
+>>>>>>> 6e957904647dee280ad39b5f93dcb35a542d7119
         <h1>Dashboard Route</h1>
         <a>Go Back to Home</a>
 >>>>>>> 6e95790 (project creation form)
