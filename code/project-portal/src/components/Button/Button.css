@@ -1,8 +1,8 @@
 .button {
     color: white;
     margin-top: 10px;
-    height: 35px;
-    width: 30%;
+    height: 40px;
+    width: 60%;
     font-weight: bolder;
     border: none;
     border-radius: 10px;
@@ -11,26 +11,7 @@
 }
 
 .button:hover {
-    width: 35%;
+    width: 65%;
     letter-spacing: 2px;
 }
 
-@media only screen and (max-width: 1000px){
-    .button{
-        width: 40%;
-    }
-    .button:hover {
-        width: 45%;
-        letter-spacing: 2px;
-    }
-}
-
-@media only screen and (max-width: 600px){
-    .button{
-        width: 50%;
-    }
-    .button:hover {
-        width: 55%;
-        letter-spacing: 2px;
-    }
-}

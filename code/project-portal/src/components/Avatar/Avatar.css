@@ -4,7 +4,7 @@
     border-radius: 50px;
     background-size: cover;
     background-position: center;
-    background-image: url("./../assets/images/logo.jpg");
+    background-image: url("./../../assets/images/logo.jpg");
     margin: auto;
     margin-bottom: 0;
 }
