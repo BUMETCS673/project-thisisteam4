@@ -16,10 +16,13 @@ const Landing = () => {
           <Link to="/about" className="landing-link">
             About
           </Link>
-          <Link to="/login-signup" className="landing-link">
-            Login/Signup
+          <Link to="/login" className="landing-link">
+            Login
           </Link>
-        </div>       
+          <Link to="/signup" className="landing-link">
+            Signup
+          </Link>
+        </div>
       </div>
       {/* <Footer /> */}
     </div>

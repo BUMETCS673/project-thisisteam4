@@ -1,9 +1,9 @@
-form {
+.search-form {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
 }
-form input {
+.search-input {
     width: 70%;
     border-radius: 20px;
 }
