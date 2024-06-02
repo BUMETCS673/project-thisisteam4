@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavigationBar from "../../components/Navbar/Navbar"; 
-//import Footer from '../components/Footer';
+import Footer from "../../components/Footer/Footer";
 import "./Landing.css";
 
 const Landing = () => {
@@ -24,7 +24,7 @@ const Landing = () => {
           </Link>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
