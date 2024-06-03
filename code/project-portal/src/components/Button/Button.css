@@ -1,0 +1,17 @@
+.button {
+    color: white;
+    margin-top: 10px;
+    height: 40px;
+    width: 60%;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    transition: 1s all ease-in-out;
+}
+
+.button:hover {
+    width: 65%;
+    letter-spacing: 2px;
+}
+
