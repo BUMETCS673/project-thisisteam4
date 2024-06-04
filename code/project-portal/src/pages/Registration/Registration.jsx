@@ -1,8 +1,15 @@
-import React from "react";
+import Container from "./../../components/Container/Container";
+import Button from "./../../components/Button/Button";
+import Input from "./../../components/Input/Input";
+import Title from "./../../components/Title/Title";
+import Avatar from "./../../components/Avatar/Avatar";
 import * as Yup from "yup";
-import AuthForm from "./../Auth/AuthForm";
+import { Formik, Form } from "formik";
+import { ThreeDots } from "react-loader-spinner";
 import { sanitizeInput } from "./../../utils/helpers";
+//import { useNavigate } from "react-router-dom";
 
+//Validation schema with yup
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 const validationSchema = Yup.object().shape({
@@ -20,34 +27,79 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Passwords must match"),
 });
 
-const Registration = ({ registerUser }) => (
-  <AuthForm
-    title="Signup"
-    initialValues={{
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      repassword: "",
-    }}
-    validationSchema={validationSchema}
-    onSubmit={(values, actions) => {
-      const sanitizedValues = {
-        firstName: sanitizeInput(values.firstName),
-        lastName: sanitizeInput(values.lastName),
-        email: sanitizeInput(values.email),
-      };
-      registerUser(sanitizedValues, actions);
-    }}
-    fields={[
-      { label: "First Name", type: "text", id: "firstName", name: "firstName", placeholder: "First Name" },
-      { label: "Last Name", type: "text", id: "lastName", name: "lastName", placeholder: "Last Name" },
-      { label: "Email", type: "email", id: "email", name: "email", placeholder: "someone@example.com" },
-      { label: "Password", type: "password", id: "password", name: "password", placeholder: "Password" },
-      { label: "Re-Password", type: "password", id: "repassword", name: "repassword", placeholder: "Repeat Password" },
-    ]}
-    buttonText="Register"
-  />
-);
+function Registration({ registerUser }) {
+  //const navigate = useNavigate()
+  return (
+    <Container>
+      <Avatar />
+      <Title text="Signup" />
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          repassword: "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(values, actions) => {
+          const sanitizedValues = {
+            firstName: sanitizeInput(values.firstName),
+            lastName: sanitizeInput(values.lastName),
+            email: sanitizeInput(values.email),
+          };
+          registerUser(sanitizedValues, actions /**navigate*/);
+          actions.resetForm();
+        }}
+      >
+        {(props) => (
+          <Form>
+            <Input
+              label="First Name"
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+            />
+            <Input
+              label="Last Name"
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+            />
+            <Input
+              label="Email"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="someone@example.com"
+            />
+            <Input
+              label="Password"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+            <Input
+              label="Re-Password"
+              type="password"
+              id="repassword"
+              name="repassword"
+              placeholder="Repeat Password"
+            />
+            {!props.isSubmitting && (
+              <Button text="Register" color="green" type="submit" />
+            )}
+            {props.isSubmitting && (
+              <ThreeDots color="green" height={40} width={100} />
+            )}
+          </Form>
+        )}
+      </Formik>
+    </Container>
+  );
+}
 
 export default Registration;
