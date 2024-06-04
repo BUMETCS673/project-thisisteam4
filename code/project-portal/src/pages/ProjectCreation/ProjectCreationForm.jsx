@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import "./ProjectCreationForm.css"
+import './ProjectCreationForm.css';
+import strings from '../../utils/strings';
 
-
-function ProjectCreationForm() {
-  const [project, setProject] = useState({
+function createNewProject() {
+  return {
     name: '',
     owner: '',
     members: '',
@@ -11,59 +11,59 @@ function ProjectCreationForm() {
     creationDate: '',
     type: '',
     status: '',
-    completionDate: ''
-  });
+    completionDate: '',
+  };
+}
 
+function ProjectCreationForm() {
+  const [project, setProject] = useState(createNewProject());
 
   const handleChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value });
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(project);
   };
 
-
   return (
     <form onSubmit={handleSubmit} className="form-grid">
       <label>
-        Project Name:
+        {strings.projectName}
         <input type="text" name="name" onChange={handleChange} />
       </label>
       <label>
-        Project Owner:
+        {strings.projectOwner}
         <input type="text" name="owner" onChange={handleChange} />
       </label>
       <label>
-        Project Members:
+        {strings.projectMembers}
         <input type="text" name="members" onChange={handleChange} />
       </label>
       <label>
-        Description:
+        {strings.projectDescription}
         <textarea name="description" onChange={handleChange} />
       </label>
       <label>
-        Date of Creation:
+        {strings.projectCreationDate}
         <input type="date" name="creationDate" onChange={handleChange} />
       </label>
       <label>
-        Type of Project:
+        {strings.projectType}
         <input type="text" name="type" onChange={handleChange} />
       </label>
       <label>
-        Status:
+        {strings.projectStatus}
         <input type="text" name="status" onChange={handleChange} />
       </label>
       <label>
-        Date of Completion:
+        {strings.projectCompletionDate}
         <input type="date" name="completionDate" onChange={handleChange} />
       </label>
-      <button type="submit">Create Project</button>
+      <button type="submit">{strings.createProjectButton}</button>
     </form>
   );
 }
-
 
 export default ProjectCreationForm;
