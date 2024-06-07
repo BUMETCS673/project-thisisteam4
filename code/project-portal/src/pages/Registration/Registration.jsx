@@ -1,7 +1,7 @@
-import React from "react";
 import * as Yup from "yup";
 import AuthForm from "./../Auth/AuthForm";
 import { sanitizeInput } from "./../../utils/helpers";
+import { registerUser } from "../../utils/auth";
 
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -11,7 +11,7 @@ const validationSchema = Yup.object().shape({
     .max(30, "First Name is too Long"),
   lastName: Yup.string().required("Required").max(30, "Last Name is too Long"),
   email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().matches(
+  password: Yup.string().required("Required").matches(
     passwordRegex,
     "Please use a strong password!!!"
   ),
@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Passwords must match"),
 });
 
-const Registration = ({ registerUser }) => (
+const Registration = () => (
   <AuthForm
     title="Signup"
     initialValues={{
