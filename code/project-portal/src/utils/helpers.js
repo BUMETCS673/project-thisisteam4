@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 /**
  * Helper function to sanitize user input from attack (like html tags)
  * @param {string} input - user input 
@@ -24,4 +25,15 @@ export const setAuthToken = (token) => {
 export const getAuthToken = () => {
   const token = localStorage.getItem("token")
   return token
+}
+
+/**
+ * A loader function to check for authentication token to load routes that need protection
+ */
+export const checkAuth = () => {
+  const token = getAuthToken()
+
+  if(!token){
+    return redirect("/login")
+  }
 }
