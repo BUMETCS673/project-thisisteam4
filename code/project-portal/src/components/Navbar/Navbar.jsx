@@ -1,32 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import projectPortalImage from "../../assets/images/2.png";
 import "./Navbar.css";
 
-const NavigationBar = () => {
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogout = (e) => {
+    e.preventDefault(); // Prevent the default link behavior
+    // Clear user session, tokens, etc.
+    localStorage.removeItem('userToken');
+    sessionStorage.removeItem('userSession');
+    // Redirect to login page
+    navigate('/login');
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className="navbar">
-      <ul className="navbar-menu">
-        <li className="navbar-item">
-          <Link to="/" className="navbar-link">Home</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/about" className="navbar-link">About</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/dashboard" className="navbar-link">Dashboard</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/project" className="navbar-link">Projects</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/me" className="navbar-link">Me</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/search" className="navbar-link">Search</Link>
-        </li>
-      </ul>
+      <div className="navbar-container">
+        <NavLink to="/" className="navbar-logo">
+          <img src={projectPortalImage} alt="Project Portal" className="navbar-image" />
+        </NavLink>
+        <button className="navbar-toggle" onClick={toggleMenu}>
+          ☰
+        </button>
+        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
+          <li className="navbar-item">
+            <NavLink to="/about" className="navbar-link" activeClassName="active">ABOUT</NavLink>
+          </li>
+          <li className="navbar-item">
+            <NavLink to="/dashboard" className="navbar-link" activeClassName="active">Dashboard</NavLink>
+          </li>
+          <li className="navbar-item">
+            <NavLink to="/me" className="navbar-link" activeClassName="active">PROFILE</NavLink>
+          </li>
+          <li className="navbar-item">
+            <NavLink to="/project/" className="navbar-link" activeClassName="active">CREATE</NavLink>
+          </li>
+          <li className="navbar-item">
+            <NavLink to="/login" className="navbar-link" activeClassName="active" onClick={handleLogout}>LOGOUT</NavLink>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };
 
-export default NavigationBar;
+export default Navbar;
