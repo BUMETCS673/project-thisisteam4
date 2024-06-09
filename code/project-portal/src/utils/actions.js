@@ -41,7 +41,7 @@ export const getProjectById = async (projectId) => {
   //getting authorization token to append to the headers
   const authToken = getAuthToken();
   try {
-    const response = await fetch(`${API_URL}/project/${projectId}`, {
+    const response = await fetch(`${API_URL}/project/getIdWiseProject/${projectId} `, {
       method: "GET",
       headers: {
         Authorization: "Bearer " + authToken,
@@ -339,7 +339,7 @@ export const deleteComment = async(projectId) => {
     return data
     
   } catch (error) {
-    console.log("Delete cooment error: ", error);
+    console.log("Delete comment error: ", error);
   }
 }
 

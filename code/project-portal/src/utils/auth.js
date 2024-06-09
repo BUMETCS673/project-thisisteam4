@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
-const API_URL=""
+const API_URL = "/v1/user-profiles/register";
 import { redirect, json } from "react-router-dom";
 import { setAuthToken } from "./helpers";
+import { loginSuccess, logoutSuccess } from "../store/userSlice";
 
 /**
  * A user registration Http request function 
@@ -42,7 +43,7 @@ export const registerUser = async (values, actions) => {
       );
     }
 
-    return redirect("/")
+    return redirect("/login")
   } catch (error) {
     console.log("Register user error: ", error);
   }
@@ -52,8 +53,9 @@ export const registerUser = async (values, actions) => {
  * User Login Http request function
  * @param {object} values - user data which come from the form submission using Formik
  * @param {object} actions - set of actions provided by Formik library 
+ * @param {function} dispatch - a dispact function to call the reducer function
  */
-export const loginUser = async (values, actions) => {
+export const loginUser = async (values, actions, dispatch) => {
     try {
       const response = await fetch(`${API_URL}/`, {
         method: "POST",
@@ -84,6 +86,14 @@ export const loginUser = async (values, actions) => {
         return response;
       }
 
+      //Backend api not found
+      if (response.status == 404) {
+        throw json(
+          { message: response.message || "API endpoint not found" },
+          { status: 404 }
+        );
+      }
+
       //checking if the request has a failed response
       if (!response.ok) {
         throw json(
@@ -92,13 +102,22 @@ export const loginUser = async (values, actions) => {
         );
       }
 
-      const data = response.json()
-      const token = data.token
+      const data = response.json();
+      const stateData = {
+        user: data.user,
+        token: data.token,
+        isAuthenticated: true
+      }
+      //const userData = data.user
+      const token = data.token;
 
       //setting the auth token
-      setAuthToken(token)
+      setAuthToken(token);
+      //setting the user detail
+      //setUserData(userData)
 
-      return redirect("/")
+      dispatch(loginSuccess(stateData))
+      return redirect("/dashboard");
     }catch(error){
         console.log("Login User error: ", error)
     }
@@ -107,7 +126,9 @@ export const loginUser = async (values, actions) => {
 /**
  * A logout function to remove the authentication token from the browser abd redirect to the home page
  */
-export const logout = () => {
+export const logout = (dispacth) => {
     localStorage.removeItem("token")
+    //localStorage.removeItem("user")
+    dispacth(logoutSuccess())
     redirect("/")
 }

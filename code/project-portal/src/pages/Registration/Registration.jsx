@@ -31,13 +31,13 @@ const Registration = () => (
       repassword: "",
     }}
     validationSchema={validationSchema}
-    onSubmit={(values, actions) => {
+    onSubmit={(values, actions, dispatch) => {
       const sanitizedValues = {
         firstName: sanitizeInput(values.firstName),
         lastName: sanitizeInput(values.lastName),
         email: sanitizeInput(values.email),
       };
-      registerUser(sanitizedValues, actions);
+      registerUser(sanitizedValues, actions, dispatch);
     }}
     fields={[
       { label: "First Name", type: "text", id: "firstName", name: "firstName", placeholder: "First Name" },

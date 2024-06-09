@@ -37,3 +37,20 @@ export const checkAuth = () => {
     return redirect("/login")
   }
 }
+
+/**
+ * Helper function to store the user detail in the browser
+ * @param {object} - user details fetched from backend 
+ */
+export const setUserData = (userData) => {
+  localStorage.setItem("user", userData)
+}
+
+/**
+ * Helper function to get user details stored in the browser
+ * @returns {object} - user detail
+ */
+export const getUserData = () => {
+  const user = localStorage.getItem("user")
+  return user
+}
