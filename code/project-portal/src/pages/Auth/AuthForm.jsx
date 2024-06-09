@@ -5,6 +5,7 @@ import Title from "./../../components/Title/Title";
 import Avatar from "./../../components/Avatar/Avatar";
 import { Formik, Form } from "formik";
 import { ThreeDots } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 const AuthForm = ({
   title,
@@ -14,6 +15,7 @@ const AuthForm = ({
   fields,
   buttonText,
   }) => {
+    const navigate = useNavigate()
     return (
       <Container>
         <Avatar />
@@ -22,7 +24,7 @@ const AuthForm = ({
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={(values, actions) => {
-            onSubmit(values, actions);
+            onSubmit(values, actions, navigate);
             actions.resetForm();
           }}
         >

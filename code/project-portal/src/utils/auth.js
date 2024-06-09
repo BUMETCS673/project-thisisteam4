@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-const API_URL = "/v1/user-profiles/register";
+const API_URL = "http://localhost:3000";
 import { redirect, json } from "react-router-dom";
 import { setAuthToken } from "./helpers";
 import { loginSuccess, logoutSuccess } from "../store/userSlice";
@@ -9,9 +8,9 @@ import { loginSuccess, logoutSuccess } from "../store/userSlice";
  * @param {object} values - user data which come from the form submission using Formik
  * @param {object} actions - set of actions provided by Formik library 
  */
-export const registerUser = async (values, actions) => {
+export const registerUser = async (values, actions, navigate) => {
   try {
-    const response = await fetch(`${API_URL}/`, {
+    const response = await fetch(`${API_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,15 +20,18 @@ export const registerUser = async (values, actions) => {
 
     //checking if the request is Bad Request with wrong user input data
     if (response.status == 400 || response.status == 401 || response.status == 422) {
-      const data = response.json();
+      const data = await response.json();
       const message = data.message;
-      if (message.toLowerCase().includes("first name")) {
+      console.log(message)
+      if (message.includes("first name")) {
         actions.setFieldError("firstName", message);
-      } else if (message.toLowerCase().includes("last name")) {
+      } else if (message.includes("last name")) {
         actions.setFieldError("lastName", message);
-      } else if (message.toLowerCase().includes("email")) {
+      } else if (message.includes("username")){
+        actions.setFieldError("username", message)
+      }  else if (message.includes("email")) {
         actions.setFieldError("email", message);
-      } else if (message.toLowerCase().includes("password")) {
+      } else if (message.includes("password")) {
         actions.setFieldError("password", message);
       }
       actions.setSubmitting(false);
@@ -43,7 +45,7 @@ export const registerUser = async (values, actions) => {
       );
     }
 
-    return redirect("/login")
+    return navigate("/login")
   } catch (error) {
     console.log("Register user error: ", error);
   }
@@ -55,7 +57,7 @@ export const registerUser = async (values, actions) => {
  * @param {object} actions - set of actions provided by Formik library 
  * @param {function} dispatch - a dispact function to call the reducer function
  */
-export const loginUser = async (values, actions, dispatch) => {
+export const loginUser = async (values, actions,navigate, dispatch) => {
     try {
       const response = await fetch(`${API_URL}/`, {
         method: "POST",
@@ -74,11 +76,11 @@ export const loginUser = async (values, actions, dispatch) => {
         const data = response.json();
         const message = data.message;
 
-        if (message.toLowerCase().includes("email")) {
+        if (message.includes("email")) {
           actions.setFieldError("email", message);
-        } else if (message.toLowerCase().includes("password")) {
+        } else if (message.includes("password")) {
           actions.setFieldError("password", message);
-        } else if (message.toLowerCase().includes("creditinals")) {
+        } else if (message.includes("creditinals")) {
           actions.setFieldError("email", message);
           actions.setFieldError("password", message);
         }
@@ -117,7 +119,7 @@ export const loginUser = async (values, actions, dispatch) => {
       //setUserData(userData)
 
       dispatch(loginSuccess(stateData))
-      return redirect("/dashboard");
+      return navigate("/dashboard");
     }catch(error){
         console.log("Login User error: ", error)
     }

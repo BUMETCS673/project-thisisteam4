@@ -10,6 +10,7 @@ const validationSchema = Yup.object().shape({
     .required("Required")
     .max(30, "First Name is too Long"),
   lastName: Yup.string().required("Required").max(30, "Last Name is too Long"),
+  username: Yup.string().required("Required").min(4, "Username is too short"),
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().required("Required").matches(
     passwordRegex,
@@ -26,22 +27,26 @@ const Registration = () => (
     initialValues={{
       firstName: "",
       lastName: "",
+      username: "",
       email: "",
       password: "",
       repassword: "",
     }}
     validationSchema={validationSchema}
-    onSubmit={(values, actions, dispatch) => {
+    onSubmit={(values, actions, navigate) => {
       const sanitizedValues = {
         firstName: sanitizeInput(values.firstName),
         lastName: sanitizeInput(values.lastName),
+        username: sanitizeInput(values.username),
         email: sanitizeInput(values.email),
+        password: values.password
       };
-      registerUser(sanitizedValues, actions, dispatch);
+      registerUser(sanitizedValues, actions, navigate);
     }}
     fields={[
       { label: "First Name", type: "text", id: "firstName", name: "firstName", placeholder: "First Name" },
       { label: "Last Name", type: "text", id: "lastName", name: "lastName", placeholder: "Last Name" },
+      { label: "User Name", type: "text", id: "username", name: "username", placeholder: "User Name"},
       { label: "Email", type: "email", id: "email", name: "email", placeholder: "someone@example.com" },
       { label: "Password", type: "password", id: "password", name: "password", placeholder: "Password" },
       { label: "Re-Password", type: "password", id: "repassword", name: "repassword", placeholder: "Repeat Password" },
