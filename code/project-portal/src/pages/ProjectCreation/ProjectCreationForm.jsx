@@ -15,7 +15,7 @@ function createNewProject() {
   };
 }
 
-function ProjectCreationForm() {
+function ProjectCreationForm({ onSubmit }) {
   const [project, setProject] = useState(createNewProject());
 
   const handleChange = (e) => {
@@ -25,6 +25,7 @@ function ProjectCreationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(project);
+    onSubmit && onSubmit(project);
   };
 
   return (
