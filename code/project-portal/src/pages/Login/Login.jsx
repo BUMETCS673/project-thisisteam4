@@ -35,13 +35,12 @@ function Login() {
           password: "",
         }}
         validationSchema={validationSchema}
-        onSubmit={async (values, {setFieldError, setSubmitting, resetForm}) => {
+        onSubmit={async (values, {setFieldError, setSubmitting}) => {
           const sanitizedValues = {
             username: sanitizeInput(values.username),
             password: values.password
           }
           await loginUser(sanitizedValues, setFieldError, setSubmitting, navigate, dispatch);
-          resetForm();
         }}
       >
         {({isSubmitting}) => (

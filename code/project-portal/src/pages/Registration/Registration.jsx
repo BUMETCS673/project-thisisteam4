@@ -47,7 +47,7 @@ function Registration() {
           repassword: "",
         }}
         validationSchema={validationSchema}
-        onSubmit={async (values, {setFieldError, setSubmitting, resetForm}) => {
+        onSubmit={async (values, {setFieldError, setSubmitting}) => {
           const sanitizedValues = {
             firstName: sanitizeInput(values.firstName),
             lastName: sanitizeInput(values.lastName),
@@ -56,7 +56,6 @@ function Registration() {
           };
           //console.log(values, actions)
           await registerUser(sanitizedValues, setFieldError, setSubmitting, navigate);
-          resetForm()
         }}
       >
         {({isSubmitting}) => (
