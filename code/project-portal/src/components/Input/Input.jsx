@@ -1,7 +1,7 @@
 import "./Input.css";
 import { useField } from "formik";
 import { useState } from "react";
-import { FiEyeOff, FiEye } from 'react-icons/fi';
+import { FiEyeOff, FiEye } from "react-icons/fi";
 
 function Input({ label = "User Input", ...props }) {
   const [field, meta] = useField(props);

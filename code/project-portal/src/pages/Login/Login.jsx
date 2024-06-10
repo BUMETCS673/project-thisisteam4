@@ -18,39 +18,43 @@ const validationSchema = Yup.object().shape({
 });
 
 /**
- * 
+ *
  * @returns Login component with Formik
  */
 function Login() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <Container>
-      <Avatar />
-      <Title text="Login" />
       <Formik
         initialValues={{
           username: "",
           password: "",
         }}
         validationSchema={validationSchema}
-        onSubmit={async (values, {setFieldError, setSubmitting}) => {
+        onSubmit={async (values, { setFieldError, setSubmitting }) => {
           const sanitizedValues = {
             username: sanitizeInput(values.username),
-            password: values.password
-          }
-          await loginUser(sanitizedValues, setFieldError, setSubmitting, navigate, dispatch);
+            password: values.password,
+          };
+          await loginUser(
+            sanitizedValues,
+            setFieldError,
+            setSubmitting,
+            navigate,
+            dispatch
+          );
         }}
       >
-        {({isSubmitting}) => (
+        {({ isSubmitting }) => (
           <Form>
             <Input
-              label="User Name"
+              label="Email"
               type="email"
               id="username"
               name="username"
-              placeholder="email : someone@example.com"
+              placeholder="someone@example.com"
             />
             <Input
               label="Password"
@@ -59,9 +63,7 @@ function Login() {
               name="password"
               placeholder="Password"
             />
-            {!isSubmitting && (
-              <Button text="Login" color="green" type="submit" />
-            )}
+            {!isSubmitting && <Button text="Login" type="submit" />}
             {isSubmitting && (
               <ThreeDots color="green" height={40} width={100} />
             )}

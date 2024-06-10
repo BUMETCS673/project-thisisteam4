@@ -1,8 +1,6 @@
 import Container from "./../../components/Container/Container";
 import Button from "./../../components/Button/Button";
 import Input from "./../../components/Input/Input";
-import Title from "./../../components/Title/Title";
-import Avatar from "./../../components/Avatar/Avatar";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ThreeDots } from "react-loader-spinner";
@@ -11,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../utils/auth";
 
 //Regular expression for password
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordRegex =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 //Validation schema with yup
 const validationSchema = Yup.object().shape({
@@ -20,10 +19,9 @@ const validationSchema = Yup.object().shape({
     .max(30, "First Name is too Long"),
   lastName: Yup.string().required("Required").max(30, "Last Name is too Long"),
   username: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().matches(
-    passwordRegex,
-    "Please use a strong password!!!"
-  ),
+  password: Yup.string()
+    .required("Required")
+    .matches(passwordRegex, "Please use a strong password!!!"),
   repassword: Yup.string()
     .required("Required")
     .oneOf([Yup.ref("password")], "Passwords must match"),
@@ -33,11 +31,9 @@ const validationSchema = Yup.object().shape({
  * Registration form Component with Formik
  */
 function Registration() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Container>
-      <Avatar />
-      <Title text="Signup" />
       <Formik
         initialValues={{
           firstName: "",
@@ -47,7 +43,7 @@ function Registration() {
           repassword: "",
         }}
         validationSchema={validationSchema}
-        onSubmit={async (values, {setFieldError, setSubmitting}) => {
+        onSubmit={async (values, { setFieldError, setSubmitting }) => {
           const sanitizedValues = {
             //firstName: sanitizeInput(values.firstName),
             //lastName: sanitizeInput(values.lastName),
@@ -55,12 +51,17 @@ function Registration() {
             password: values.password,
           };
           //console.log(values, actions)
-          await registerUser(sanitizedValues, setFieldError, setSubmitting, navigate);
+          await registerUser(
+            sanitizedValues,
+            setFieldError,
+            setSubmitting,
+            navigate
+          );
         }}
       >
-        {({isSubmitting}) => (
+        {({ isSubmitting }) => (
           <Form>
-            <Input
+            {/* <Input
               label="First Name"
               type="text"
               id="firstName"
@@ -73,13 +74,13 @@ function Registration() {
               id="lastName"
               name="lastName"
               placeholder="Last Name"
-            />
+            /> */}
             <Input
               label="Email"
               type="email"
               id="username"
               name="username"
-              placeholder="email : someone@example.com"
+              placeholder="someone@example.com"
             />
             <Input
               label="Password"
@@ -95,9 +96,7 @@ function Registration() {
               name="repassword"
               placeholder="Repeat Password"
             />
-            {!isSubmitting && (
-              <Button text="Register" color="green" type="submit" />
-            )}
+            {!isSubmitting && <Button text="Register" type="submit" />}
             {isSubmitting && (
               <ThreeDots color="green" height={40} width={100} />
             )}

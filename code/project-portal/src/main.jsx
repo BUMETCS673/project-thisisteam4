@@ -6,8 +6,7 @@ import Project from "./pages/ProjectCreation/ProjectCreationForm.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import "./index.css";
 import Landing from "./pages/Landing/Landing.jsx";
-import Login from "./pages/Login/Login.jsx";
-import Registration from "./pages/Registration/Registration.jsx";
+import Authentication from "./pages/AuthenticationPage/Authentication.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
@@ -27,12 +26,8 @@ const router = createBrowserRouter([
         element: <Dashboard />, //"/dashboard"
       },
       {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "signup",
-        element: <Registration />,
+        path: "auth",
+        element: <Authentication />,
       },
       // {
       //   path: 'about',
