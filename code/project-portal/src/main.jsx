@@ -1,3 +1,4 @@
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -13,7 +14,7 @@ import store from "./store/store.js";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <NotFound />,
     children: [
@@ -22,10 +23,18 @@ const router = createBrowserRouter([
         element: <Landing />, //landing page route will be "/"
       },
       {
-        path: "dashboard",
+        path: 'dashboard',
         element: <Dashboard />, //"/dashboard"
       },
       {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'signup',
+        element: <Registration />,
+      },
+      {   
         path: "auth",
         element: <Authentication />,
       },
@@ -42,15 +51,20 @@ const router = createBrowserRouter([
       //   element: <Project />, //"/project/:id"
       // },
       {
-        path: "project/",
+        path: 'project/',
         element: <Project />, //"/project/"
       },
     ],
   },
 ]);
+// <<<<<<< lab3-brennamahn
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   <RouterProvider router={router} />
+// =======
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <RouterProvider router={router} />
   </Provider>
+// >>>>>>> iter2
 );
