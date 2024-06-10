@@ -1,7 +1,6 @@
 import Registration from "../Registration/Registration";
 import Login from "../Login/Login";
 import { useState } from "react";
-import Title from "../../components/Title/Title";
 import "./Authentication.css";
 
 function Authentication() {
@@ -14,10 +13,16 @@ function Authentication() {
       </div>
       <div className="auth-page-form-area">
         <div className="signin-signup">
-          <p className={isLogin && "active"} onClick={() => setIsLogin(true)}>
+          <p
+            className={isLogin ? "active" : ""}
+            onClick={() => setIsLogin(true)}
+          >
             SIGN IN
           </p>
-          <p className={!isLogin && "active"} onClick={() => setIsLogin(false)}>
+          <p
+            className={!isLogin ? "active" : ""}
+            onClick={() => setIsLogin(false)}
+          >
             SIGN UP
           </p>
         </div>

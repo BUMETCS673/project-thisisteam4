@@ -1,6 +1,7 @@
 .button {
   color: white;
   margin-top: 10px;
+  margin-right: 20%;
   height: 40px;
   width: 50%;
   font-weight: bolder;
@@ -12,6 +13,6 @@
 }
 
 .button:hover {
-  width: 65%;
+  width: 55%;
   letter-spacing: 2px;
 }
