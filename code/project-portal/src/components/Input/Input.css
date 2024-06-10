@@ -4,6 +4,7 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 .label{
@@ -44,4 +45,13 @@
     margin: 0;
     padding: 0;
     text-align: left;    
+}
+
+.show-pass-icon {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 700;
+    position: absolute;
+    right: 20px;
+    bottom: -15px;
 }
