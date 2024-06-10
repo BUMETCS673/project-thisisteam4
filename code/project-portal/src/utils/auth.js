@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "https://api-usermanagement-service.onrender.com";
 import { redirect, json } from "react-router-dom";
 import { loginSuccess, logoutSuccess } from "../store/userSlice";
 
@@ -16,7 +16,7 @@ export const registerUser = async (
   navigate
 ) => {
   try {
-    const response = await fetch(`${API_URL}/register`, {
+    const response = await fetch(`${API_URL}/v1/user-profiles/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

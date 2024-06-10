@@ -49,8 +49,8 @@ function Registration() {
         validationSchema={validationSchema}
         onSubmit={async (values, {setFieldError, setSubmitting}) => {
           const sanitizedValues = {
-            firstName: sanitizeInput(values.firstName),
-            lastName: sanitizeInput(values.lastName),
+            //firstName: sanitizeInput(values.firstName),
+            //lastName: sanitizeInput(values.lastName),
             username: sanitizeInput(values.username),
             password: values.password,
           };
