@@ -1,7 +1,7 @@
 import "./ProjectCard.css"
 const ProjectCard = ({project}) => {
     return(
-        <section className="projectCard">
+        <section className="projectCard" role="article">
             <header>
                 <h3>{project.title}</h3>
                 <div>

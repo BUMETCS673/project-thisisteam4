@@ -7,7 +7,7 @@ const SearchBar = () => {
                 <option value="class-2">Class 2</option>
                 <option value="class-3">Class 3</option>
             </select>
-        <input type="search" placeholder="Search for..." className="search-input"/>
+        <input type="search" role="searchbox" placeholder="Search for..." className="search-input"/>
         <button type="submit">SUBMIT</button>  
         </form>
     )
