@@ -1,48 +1,27 @@
-/* Container for the entire landing page */
-.landing-container {
+
+.landing-page {
+  padding: 20px;
+}
+
+.text-image-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-/* Container for the content */
-.landing-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Container for the title */
-.landing-title-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.landing-title {
-  font-size: 2.5rem;
-  color: #e05cf2;
-}
-
-/* Container for the links */
-.landing-links {
-  display: flex;
-  justify-content: center;
   width: 100%;
-  max-width: 400px; 
-  gap: 40px; 
-  margin-top: 20px;
 }
 
-.landing-link {
-  font-size: 1.2rem;
-  color: #007bff;
-  text-decoration: none;
+.text-content {
+  flex: 0 0 50%; 
+
 }
 
-.landing-link:hover {
-  text-decoration: underline;
+.image-content {
+  flex: 0 0 50%; 
+  display: flex;
+  justify-content: center; 
+}
+
+.big-logo {
+  width: 100%;
+  height: auto;
 }
