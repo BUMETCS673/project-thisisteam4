@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import Dashboard from "./pages/Dasboard/Dashboard.jsx";
-import Project from "./pages/ProjectCreation/ProjectCreationForm.jsx";
+import Project from "./pages/ProjectCreation/FormCard.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import "./index.css";
 import Landing from "./pages/Landing/Landing.jsx";
@@ -26,14 +26,14 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <Dashboard />, //"/dashboard"
       },
-      {
-        path: 'login',
-        element: <Login />,
-      },
-      {
-        path: 'signup',
-        element: <Registration />,
-      },
+      // {
+      //   path: 'login',
+      //   element: <Login />,
+      // },
+      // {
+      //   path: 'signup',
+      //   element: <Registration />,
+      // },
       {   
         path: "auth",
         element: <Authentication />,

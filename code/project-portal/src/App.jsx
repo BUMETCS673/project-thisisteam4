@@ -5,6 +5,7 @@ import PageContent from "./components/PageContent/PageContent.jsx"
 import Page from "./components/Page/Page.jsx"
 import { useLocation } from 'react-router-dom'
 import './App.css'
+import Navbar from './components/Navbar/Navbar.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
     <>
       {/* Would import the Nagication and Footer and see it on every page */}
       <div>
+        <Navbar/>
         <main>
           <Page currentPage={currentPage} />
         </main>
