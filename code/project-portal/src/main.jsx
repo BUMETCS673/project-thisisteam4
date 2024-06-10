@@ -1,14 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import Dashboard from './pages/Dasboard/Dashboard.jsx';
-import Project from './pages/ProjectCreation/FormCard.jsx';
-import NotFound from './pages/NotFound/NotFound.jsx';
-import './index.css';
-import Landing from './pages/Landing/Landing.jsx';
-import Login from './pages/Login/Login.jsx';
-import Registration from './pages/Registration/Registration.jsx';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import Dashboard from "./pages/Dasboard/Dashboard.jsx";
+import Project from "./pages/ProjectCreation/ProjectCreationForm.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+import "./index.css";
+import Landing from "./pages/Landing/Landing.jsx";
+import Authentication from "./pages/AuthenticationPage/Authentication.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
         path: 'signup',
         element: <Registration />,
       },
+      {   
+        path: "auth",
+        element: <Authentication />,
+      },
       // {
       //   path: 'about',
       //   element: <About />, // "/about"
@@ -51,6 +57,14 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+// <<<<<<< lab3-brennamahn
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   <RouterProvider router={router} />
+// =======
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+// >>>>>>> iter2
 );
