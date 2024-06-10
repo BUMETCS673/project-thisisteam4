@@ -1,16 +1,15 @@
 import { json } from "react-router-dom";
-import { getAuthToken } from "./helpers";
 const API_URL = "http://127.0.0.1:82/apiv1"
 
 
 //Projects
 /**
  * Http request function to fetch projects from the backend
+ * @param {string} authToken - autentication token
  * @returns {json} - returns http response as a json
  */
-export const getAllProjects = async () => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken()
+export const getAllProjects = async (authToken) => {
+  
   try {
     const response = await fetch(`${API_URL}/project/getallprojects`, {
       method: "GET",
@@ -35,11 +34,10 @@ export const getAllProjects = async () => {
 /**
  * Http request to fet a single project from the backend based on its id
  * @param {string} projectId - string id of the project 
+ * @param {string} authToken - autentication token
  * @returns {json} - returns http response as a json
  */
-export const getProjectById = async (projectId) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const getProjectById = async (projectId, authToken) => {
   try {
     const response = await fetch(`${API_URL}/project/getIdWiseProject/${projectId} `, {
       method: "GET",
@@ -71,11 +69,10 @@ export const getProjectById = async (projectId) => {
 /**
  * Http post request function to send project data to the backend to create a new project
  * @param {object} projectData - object containing information about the project
+ * @param {string} authToken - autentication token
  * @returns {json} - returns http response as a json
  */
-export const createProject = async (projectData) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const createProject = async (projectData, authToken) => {
   try {
     const response = await fetch(`${API_URL}/addprojects`, {
       method: "POST",
@@ -107,11 +104,10 @@ export const createProject = async (projectData) => {
  * Http put request function to send project data to the backend to update existing project 
  * @param {string} projectId - a specific id related to an existing project in the backend 
  * @param {object} projectData - updated oblect containing the new information about the project
+ * @param {string} authToken - autentication token
  * @returns {json} -  - returns http response as a json
  */
-export const updateProject = async(projectId, projectData) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const updateProject = async(projectId, projectData, authToken) => {
   try {
     const response = await fetch(`${API_URL}/project/editProject/${projectId}`, {
       method: "PUT",
@@ -141,11 +137,10 @@ export const updateProject = async(projectId, projectData) => {
 /**
  * Http delete request function to delete project based on its id 
  * @param {string} projectId - a specific id related to an existing project in the backend 
+ * @param {string} authToken - autentication token
  * @returns {json} -  - returns http response as a json
  */
-export const deleteProject = async(projectId) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const deleteProject = async(projectId, authToken) => {
   try {
     const response = await fetch(`${API_URL}/project/deleteproject/${projectId}`, {
       method: "DELETE",
@@ -176,11 +171,10 @@ export const deleteProject = async(projectId) => {
 /**
  * Http request function to get all the tasks related to a project based on its id 
  * @param {string} projectId - a specific id related to an existing project in the backend 
+ * @param {string} authToken - autentication token
  * @returns {json} -  - returns http response as a json
  */
-export const getAllTasks = async(projectId) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const getAllTasks = async(projectId, authToken) => {
   try {
     const response = await fetch(`${API_URL}/task/project/getalltasks/${projectId}`, {
       method: "GET",
@@ -209,12 +203,11 @@ export const getAllTasks = async(projectId) => {
 //Comments
 /**
  * Http request function to get all the cooments related to a project based on its id 
- * @param {string} projectId - a specific id related to an existing project in the backend 
+ * @param {string} projectId - a specific id related to an existing project in the backend
+ * @param {string} authToken - autentication token 
  * @returns {json} -  - returns http response as a json
  */
-export const getAllComments = async(projectId) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const getAllComments = async(projectId, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${projectId}`, {
       method: "GET",
@@ -244,11 +237,10 @@ export const getAllComments = async(projectId) => {
  * Http post request function to add comment to a project 
  * @param {string} projectId - a project id to add the comment
  * @param {object} - object data containing the comment
+ * @param {string} authToken - autentication token
  * @returns {json} - returns http response as a json
  */
-export const addComment = async (projectId, commentData) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const addComment = async (projectId, commentData, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${projectId}`, {
       method: "POST",
@@ -279,11 +271,10 @@ export const addComment = async (projectId, commentData) => {
  * Http put request function to edit comment about a project 
  * @param {string} commentId - a specific id related to an existing comment in the backend 
  * @param {object} commentData - updated comment object
+ * @param {string} authToken - autentication token
  * @returns {json} -  - returns http response as a json
  */
-export const editComment = async(commentId, commentData) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const editComment = async(commentId, commentData, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${commentId}`, {
       method: "PUT",
@@ -313,11 +304,10 @@ export const editComment = async(commentId, commentData) => {
 /**
  * Http delete request function to delete comment based on its id 
  * @param {string} commentId - a specific id related to an existing comment in the backend 
+ * @param {string} authToken - autentication token
  * @returns {json} - returns http response as a json
  */
-export const deleteComment = async(projectId) => {
-  //getting authorization token to append to the headers
-  const authToken = getAuthToken();
+export const deleteComment = async(projectId, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${projectId}`, {
       method: "DELETE",

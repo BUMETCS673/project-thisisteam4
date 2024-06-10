@@ -1,6 +1,5 @@
 const API_URL = "http://localhost:3000";
 import { redirect, json } from "react-router-dom";
-import { setAuthToken } from "./helpers";
 import { loginSuccess, logoutSuccess } from "../store/userSlice";
 
 /**
@@ -110,17 +109,17 @@ export const loginUser = async (values, setFieldError, setSubmitting, navigate, 
       }
 
       const data = await response.json();
-      console.log(data)
+      //console.log(data)
       const stateData = {
         user: data.user,
         token: data.token,
         isAuthenticated: true
       }
       //const userData = data.user
-      const token = data.token;
+      //const token = data.token;
 
       //setting the auth token
-      setAuthToken(token);
+      //setAuthToken(token);
       //setting the user detail
       //setUserData(userData)
 
@@ -136,7 +135,7 @@ export const loginUser = async (values, setFieldError, setSubmitting, navigate, 
  * A logout function to remove the authentication token from the browser abd redirect to the home page
  */
 export const logout = (dispacth) => {
-    localStorage.removeItem("token")
+    //localStorage.removeItem("token")
     //localStorage.removeItem("user")
     dispacth(logoutSuccess())
     redirect("/")
