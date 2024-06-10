@@ -62,7 +62,9 @@ function ProjectCreationForm({ onSubmit }) {
         {strings.projectCompletionDate}
         <input type="date" name="completionDate" onChange={handleChange} />
       </label>
-      <button type="submit">{strings.createProjectButton}</button>
+      <button type="submit" className="submit-button">
+        {strings.createProjectButton}
+      </button>
     </form>
   );
 }
