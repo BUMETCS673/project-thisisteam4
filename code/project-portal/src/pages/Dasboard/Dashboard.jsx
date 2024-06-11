@@ -128,7 +128,6 @@ const Dashboard= () => {
     }
     return(
         <main className="dashboard-section">
-            <Navbar/>
             <SearchBar/>
             {/* total amount of projects on page */}
             <h2>({projects.length}) Projects</h2>
