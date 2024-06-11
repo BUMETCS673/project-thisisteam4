@@ -13,8 +13,8 @@ import { loginSuccess, logoutSuccess } from "../store/userSlice";
 export const registerUser = async (
   values,
   setFieldError,
-  setSubmitting,
-  navigate
+  setSubmitting
+  //navigate
 ) => {
   try {
     const response = await fetch(`${API_URL}/register`, {
@@ -55,7 +55,8 @@ export const registerUser = async (
       );
     }
 
-    return navigate("/login");
+    return response;
+    //return navigate("/login");
   } catch (error) {
     //console.log("Register user error: ", error);
     return error;

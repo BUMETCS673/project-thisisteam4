@@ -1,12 +1,14 @@
 import Container from "./../../components/Container/Container";
 import Button from "./../../components/Button/Button";
 import Input from "./../../components/Input/Input";
+import SuccessModal from "../../components/SuccessModal/SuccessModal";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ThreeDots } from "react-loader-spinner";
 import { sanitizeInput } from "./../../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../utils/auth";
+import { useState } from "react";
 
 //Regular expression for password
 const passwordRegex =
@@ -14,10 +16,6 @@ const passwordRegex =
 
 //Validation schema with yup
 const validationSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .required("Required")
-    .max(30, "First Name is too Long"),
-  lastName: Yup.string().required("Required").max(30, "Last Name is too Long"),
   username: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string()
     .required("Required")
@@ -32,18 +30,21 @@ const validationSchema = Yup.object().shape({
  */
 function Registration() {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
   return (
     <Container>
+      <SuccessModal show={showModal} />
       <Formik
         initialValues={{
-          firstName: "",
-          lastName: "",
+          //firstName: "",
+          //lastName: "",
           username: "",
           password: "",
           repassword: "",
         }}
         validationSchema={validationSchema}
         onSubmit={async (values, { setFieldError, setSubmitting }) => {
+          console.log(values);
           const sanitizedValues = {
             //firstName: sanitizeInput(values.firstName),
             //lastName: sanitizeInput(values.lastName),
@@ -51,30 +52,23 @@ function Registration() {
             password: values.password,
           };
           //console.log(values, actions)
-          await registerUser(
+          const response = await registerUser(
             sanitizedValues,
             setFieldError,
             setSubmitting,
             navigate
           );
+          if (response.ok) {
+            setShowModal(true);
+            setTimeout(() => {
+              setShowModal(false);
+              window.location.href = "/auth";
+            }, 1000);
+          }
         }}
       >
         {({ isSubmitting }) => (
           <Form>
-            {/* <Input
-              label="First Name"
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="First Name"
-            />
-            <Input
-              label="Last Name"
-              type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Last Name"
-            /> */}
             <Input
               label="Email"
               type="email"
@@ -100,6 +94,20 @@ function Registration() {
             {isSubmitting && (
               <ThreeDots color="green" height={40} width={100} />
             )}
+            {/* <Input
+              label="First Name"
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+            />
+            <Input
+              label="Last Name"
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+            /> */}
           </Form>
         )}
       </Formik>

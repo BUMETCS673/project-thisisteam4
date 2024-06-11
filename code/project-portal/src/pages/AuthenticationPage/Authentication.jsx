@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./Authentication.css";
 
 function Authentication() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <div className="auth-page-container">
       <div className="pp-heading">
@@ -26,8 +26,8 @@ function Authentication() {
             SIGN UP
           </p>
         </div>
-        {!isLogin && <Registration />}
         {isLogin && <Login />}
+        {!isLogin && <Registration />}
       </div>
     </div>
   );
