@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutSuccess } from '../../store/userSlice'; // 确认路径正确
 import projectPortalImage from "../../assets/images/2.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = (e) => {
-    e.preventDefault(); // Prevent the default link behavior
-    // Clear user session, tokens, etc.
-    localStorage.removeItem('userToken');
-    sessionStorage.removeItem('userSession');
-    // Redirect to login page
-    navigate('/login');
+    e.preventDefault();
+
+    dispatch(logoutSuccess());
+
+    navigate('/auth');
   };
 
   const toggleMenu = () => {
@@ -36,15 +39,24 @@ const Navbar = () => {
           <li className="navbar-item">
             <NavLink to="/dashboard" className="navbar-link" activeClassName="active">Dashboard</NavLink>
           </li>
-          <li className="navbar-item">
-            <NavLink to="/me" className="navbar-link" activeClassName="active">PROFILE</NavLink>
-          </li>
-          <li className="navbar-item">
-            <NavLink to="/project/" className="navbar-link" activeClassName="active">CREATE</NavLink>
-          </li>
-          <li className="navbar-item">
-            <NavLink to="/login" className="navbar-link" activeClassName="active" onClick={handleLogout}>LOGOUT</NavLink>
-          </li>
+          {isAuthenticated && (
+            <>
+              <li className="navbar-item">
+                <NavLink to="/me" className="navbar-link" activeClassName="active">PROFILE</NavLink>
+              </li>
+              <li className="navbar-item">
+                <NavLink to="/project/" className="navbar-link" activeClassName="active">CREATE</NavLink>
+              </li>
+              <li className="navbar-item">
+                <NavLink to="/auth" className="navbar-link" activeClassName="active" onClick={handleLogout}>LOGOUT</NavLink>
+              </li>
+            </>
+          )}
+          {!isAuthenticated && (
+            <li className="navbar-item">
+              <NavLink to="/auth" className="navbar-link" activeClassName="active">LOGIN</NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
