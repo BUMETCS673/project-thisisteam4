@@ -1,4 +1,5 @@
-const API_URL = "https://api-usermanagement-service.onrender.com";
+// const API_URL = "https://api-usermanagement-service.onrender.com";
+const API_URL = "https://guarded-temple-98301-e767ce7eb6d7.herokuapp.com";
 import { redirect, json } from "react-router-dom";
 import { loginSuccess, logoutSuccess } from "../store/userSlice";
 
@@ -16,7 +17,7 @@ export const registerUser = async (
   navigate
 ) => {
   try {
-    const response = await fetch(`${API_URL}/v1/user-profiles/register`, {
+    const response = await fetch(`${API_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
