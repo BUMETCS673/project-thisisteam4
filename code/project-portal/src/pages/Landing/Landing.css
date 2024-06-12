@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+
+.landing-page {
+  padding: 20px;
+}
+
+.text-image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.text-content {
+  flex: 0 0 50%; 
+
+}
+
+.image-content {
+  flex: 0 0 50%; 
+  display: flex;
+  justify-content: center; 
+}
+
+.big-logo {
+  width: 100%;
+  height: auto;
+=======
 /* Container for the entire landing page */
 .landing-container {
   display: flex;
@@ -45,4 +73,5 @@
 
 .landing-link:hover {
   text-decoration: underline;
+>>>>>>> main
 }

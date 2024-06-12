@@ -5,12 +5,21 @@ import PageContent from "./components/PageContent/PageContent.jsx"
 import Page from "./components/Page/Page.jsx"
 import { useLocation } from 'react-router-dom'
 import './App.css'
+<<<<<<< HEAD
+import Navbar from './components/Navbar/Navbar.jsx'
+=======
+>>>>>>> main
 
 function App() {
   const [count, setCount] = useState(0)
   const currentPage = useLocation().pathname;
   return (
     <>
+<<<<<<< HEAD
+      {/* Would import the Nagication and Footer and see it on every page */}
+      <div>
+        <Navbar/>
+=======
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -33,6 +42,7 @@ function App() {
       </p> */}
       {/* Would import the Nagication and Footer and see it on every page */}
       <div>
+>>>>>>> main
         <main>
           <Page currentPage={currentPage} />
         </main>

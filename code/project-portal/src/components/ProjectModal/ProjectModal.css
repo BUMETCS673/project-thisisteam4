@@ -1,0 +1,87 @@
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.project-modal .transparent-section {
+    width: 150%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.215);
+}
+.project-modal ul {
+    list-style-type: none;
+}
+.project-modal aside {
+    width: 100%;
+    background-color: var( --color-text-light);
+}
+.project-modal aside header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+.project-modal aside main {
+    text-align: start;
+    padding-left:10%;
+}
+.project-modal aside main h3{
+    margin: 0;
+    padding:  3% 0 2% 0;
+    font-weight: 600;
+}
+
+.project-modal aside main ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    margin-bottom:10%;
+    justify-content: space-between;
+}
+.groupMember{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+.project-modal footer ul {
+    margin: 15%;
+    padding:4%;
+    border-radius: 12px;
+    background-color: var(--color-background);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.project-modal .task{
+    display: flex;
+    justify-content: space-between;
+    background-color: var( --color-text-light);
+    margin: 2%;
+    padding: 0 4%;
+    border-radius: 13px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.project-modal footer ul li div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    margin:0;
+    padding: 0;
+}
+footer ul li.task.completed {
+    background-color: #f2f2f2;
+    color: #2a2a2a;
+    text-decoration: line-through;
+}

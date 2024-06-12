@@ -1,3 +1,43 @@
+<<<<<<< HEAD
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.form-grid input {
+  margin: 10px 0 5px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-family: var(--font-paragraph);
+  font-size: 20px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: var(--font-primary);
+}
+
+.form-grid textarea {
+  margin: 10px 0 5px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-family: var(--font-paragraph);
+  font-size: 20px;
+}
+
+.submit-button {
+  background-color: var(--color-secondary);
+  color: white;
+  border-radius: 20px;
+}
+=======
 
 .form-grid {
     display: grid;
@@ -11,3 +51,4 @@
   }
 
 
+>>>>>>> main
