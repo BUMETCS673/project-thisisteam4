@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "jest-test": "jest",
-    "test": "mocha tests/e2e/Landing.test.js"
+    "test": "jest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
