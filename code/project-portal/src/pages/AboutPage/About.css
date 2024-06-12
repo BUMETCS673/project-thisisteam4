@@ -1,0 +1,18 @@
+.team-members {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Adjust the size as needed */
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+.team-member {
+  /* Add styles for each team member */
+}
+
+.team-member-avatar {
+  width: 100px; /* Set the width of the avatar */
+  height: 100px; /* Set the height of the avatar */
+  object-fit: cover; /* Ensure the aspect ratio of the image is preserved */
+}

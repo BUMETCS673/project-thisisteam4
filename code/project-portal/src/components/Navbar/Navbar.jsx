@@ -52,7 +52,7 @@ const Navbar = () => {
               className="navbar-link"
               activeClassName="active"
             >
-              Dashboard
+              DASHBOARD
             </NavLink>
           </li>
           {isAuthenticated && (
