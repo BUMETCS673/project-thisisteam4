@@ -1,12 +1,16 @@
+<<<<<<< HEAD
 /**
  * Helper function to sanitize user input from attack (like html tags)
  * @param {string} input - user input 
  * @returns {string} - sanitized string of the user input
  */
+=======
+>>>>>>> main
 export const sanitizeInput = (input) => {
   const sanitized = input.replace(/<[^>]*>?/gm, "");
   return sanitized;
 };
+<<<<<<< HEAD
 
 
 // /**
@@ -53,3 +57,5 @@ export const sanitizeInput = (input) => {
 //   const user = localStorage.getItem("user")
 //   return user
 // }
+=======
+>>>>>>> main

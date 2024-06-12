@@ -1,11 +1,17 @@
 import Container from "./../../components/Container/Container";
 import Button from "./../../components/Button/Button";
 import Input from "./../../components/Input/Input";
+<<<<<<< HEAD
 import SuccessModal from "../../components/SuccessModal/SuccessModal";
+=======
+import Title from "./../../components/Title/Title";
+import Avatar from "./../../components/Avatar/Avatar";
+>>>>>>> main
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ThreeDots } from "react-loader-spinner";
 import { sanitizeInput } from "./../../utils/helpers";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../utils/auth";
 import { useState } from "react";
@@ -20,11 +26,29 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .required("Required")
     .matches(passwordRegex, "Please use a strong password!!!"),
+=======
+//import { useNavigate } from "react-router-dom";
+
+//Validation schema with yup
+const passwordRegex =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const validationSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .required("Required")
+    .max(30, "First Name is too Long"),
+  lastName: Yup.string().required("Required").max(30, "Last Name is too Long"),
+  email: Yup.string().email("Invalid email address").required("Required"),
+  password: Yup.string().matches(
+    passwordRegex,
+    "Please use a strong password!!!"
+  ),
+>>>>>>> main
   repassword: Yup.string()
     .required("Required")
     .oneOf([Yup.ref("password")], "Passwords must match"),
 });
 
+<<<<<<< HEAD
 /**
  * Registration form Component with Formik
  */
@@ -39,10 +63,24 @@ function Registration() {
           //firstName: "",
           //lastName: "",
           username: "",
+=======
+function Registration({ registerUser }) {
+  //const navigate = useNavigate()
+  return (
+    <Container>
+      <Avatar />
+      <Title text="Signup" />
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+>>>>>>> main
           password: "",
           repassword: "",
         }}
         validationSchema={validationSchema}
+<<<<<<< HEAD
         onSubmit={async (values, { setFieldError, setSubmitting }) => {
           console.log(values);
           const sanitizedValues = {
@@ -74,6 +112,39 @@ function Registration() {
               type="email"
               id="username"
               name="username"
+=======
+        onSubmit={(values, actions) => {
+          const sanitizedValues = {
+            firstName: sanitizeInput(values.firstName),
+            lastName: sanitizeInput(values.lastName),
+            email: sanitizeInput(values.email),
+          };
+          registerUser(sanitizedValues, actions /**navigate*/);
+          actions.resetForm();
+        }}
+      >
+        {(props) => (
+          <Form>
+            <Input
+              label="First Name"
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+            />
+            <Input
+              label="Last Name"
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+            />
+            <Input
+              label="Email"
+              type="email"
+              id="email"
+              name="email"
+>>>>>>> main
               placeholder="someone@example.com"
             />
             <Input
@@ -90,6 +161,7 @@ function Registration() {
               name="repassword"
               placeholder="Repeat Password"
             />
+<<<<<<< HEAD
             {!isSubmitting && <Button text="Register" type="submit" />}
             {isSubmitting && (
               <ThreeDots color="green" height={40} width={100} />
@@ -108,6 +180,14 @@ function Registration() {
               name="lastName"
               placeholder="Last Name"
             /> */}
+=======
+            {!props.isSubmitting && (
+              <Button text="Register" color="green" type="submit" />
+            )}
+            {props.isSubmitting && (
+              <ThreeDots color="green" height={40} width={100} />
+            )}
+>>>>>>> main
           </Form>
         )}
       </Formik>
@@ -116,6 +196,7 @@ function Registration() {
 }
 
 export default Registration;
+<<<<<<< HEAD
 
 // import * as Yup from "yup";
 // import AuthForm from "./../Auth/AuthForm";
@@ -175,3 +256,5 @@ export default Registration;
 // );
 
 // export default Registration;
+=======
+>>>>>>> main

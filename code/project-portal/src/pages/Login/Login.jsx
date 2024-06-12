@@ -6,6 +6,7 @@ import Avatar from "./../../components/Avatar/Avatar";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { ThreeDots } from "react-loader-spinner";
+<<<<<<< HEAD
 import { loginUser } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -48,12 +49,42 @@ function Login() {
         }}
       >
         {({ isSubmitting }) => (
+=======
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email address").required("Required"),
+  password: Yup.string().min(8, "Password too short.").required("Required"),
+});
+
+function Login({ loginUser }) {
+  return (
+    <Container>
+      <Avatar />
+      <Title text="Login" />
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(values, actions) => {
+          loginUser(values, actions);
+          actions.resetForm();
+        }}
+      >
+        {(props) => (
+>>>>>>> main
           <Form>
             <Input
               label="Email"
               type="email"
+<<<<<<< HEAD
               id="username"
               name="username"
+=======
+              id="email"
+              name="email"
+>>>>>>> main
               placeholder="someone@example.com"
             />
             <Input
@@ -63,8 +94,15 @@ function Login() {
               name="password"
               placeholder="Password"
             />
+<<<<<<< HEAD
             {!isSubmitting && <Button text="Login" type="submit" />}
             {isSubmitting && (
+=======
+            {!props.isSubmitting && (
+              <Button text="Login" color="green" type="submit" />
+            )}
+            {props.isSubmitting && (
+>>>>>>> main
               <ThreeDots color="green" height={40} width={100} />
             )}
           </Form>
@@ -75,6 +113,7 @@ function Login() {
 }
 
 export default Login;
+<<<<<<< HEAD
 
 // import * as Yup from "yup";
 // import AuthForm from "./../Auth/AuthForm";
@@ -122,3 +161,5 @@ export default Login;
 // };
 
 // export default Login;
+=======
+>>>>>>> main
