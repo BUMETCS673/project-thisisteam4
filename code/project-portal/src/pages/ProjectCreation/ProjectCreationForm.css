@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .form-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -37,18 +36,3 @@
   color: white;
   border-radius: 20px;
 }
-=======
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
- 
-  .form-grid label {
-    display: flex;
-    flex-direction: column;
-  }
-
-
->>>>>>> main

@@ -1,21 +1,16 @@
-<<<<<<< HEAD
 /**
  * Helper function to sanitize user input from attack (like html tags)
- * @param {string} input - user input 
+ * @param {string} input - user input
  * @returns {string} - sanitized string of the user input
  */
-=======
->>>>>>> main
 export const sanitizeInput = (input) => {
-  const sanitized = input.replace(/<[^>]*>?/gm, "");
+  const sanitized = input.replace(/<[^>]*>?/gm, '');
   return sanitized;
 };
-<<<<<<< HEAD
-
 
 // /**
 //  * Helper function to store the authorization token in the browser
-//  * @param {string} token - authorization token fetched from backend 
+//  * @param {string} token - authorization token fetched from backend
 //  */
 // export const setAuthToken = (token) => {
 //   localStorage.setItem("token", token)
@@ -43,7 +38,7 @@ export const sanitizeInput = (input) => {
 
 // /**
 //  * Helper function to store the user detail in the browser
-//  * @param {object} - user details fetched from backend 
+//  * @param {object} - user details fetched from backend
 //  */
 // export const setUserData = (userData) => {
 //   localStorage.setItem("user", userData)
@@ -57,5 +52,3 @@ export const sanitizeInput = (input) => {
 //   const user = localStorage.getItem("user")
 //   return user
 // }
-=======
->>>>>>> main
