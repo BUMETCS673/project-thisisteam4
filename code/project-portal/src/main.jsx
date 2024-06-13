@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
+import About from './pages//AboutPage/About.jsx';
 import Dashboard from './pages/Dasboard/Dashboard.jsx';
 import Project from './pages/ProjectCreation/FormCard.jsx';
 import Profile from './pages/ProfilePage/Profile.jsx';

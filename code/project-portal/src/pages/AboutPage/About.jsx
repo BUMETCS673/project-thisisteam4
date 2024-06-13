@@ -1,5 +1,6 @@
 import React from 'react';
 import avatar1 from '../../assets/images/avatar1.png';
+import avatar3 from '../../assets/images/avatar3.png';
 import './About.css';
 
 const About = () => {
@@ -17,7 +18,7 @@ const About = () => {
     {
       title: 'Pinwen Mu',
       description: 'Configuration Lead',
-      avatar: 'url_to_avatar_for_team_member_3',
+      avatar: avatar3,
     },
     {
       title: 'Natanim Eibrahim',
