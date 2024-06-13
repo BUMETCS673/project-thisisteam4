@@ -1,6 +1,9 @@
 import React from 'react';
-import avatar1 from '../../assets/images/avatar1.png';
-import avatar3 from '../../assets/images/avatar3.png';
+import brenna from '../../assets/images/brenna.png';
+import brooke from '../../assets/images/brooke.png';
+import lillian from '../../assets/images/lillian.png';
+import fehmi from '../../assets/images/fehmi.png';
+import nati from '../../assets/images/nati.png';
 import './About.css';
 
 const About = () => {
@@ -8,27 +11,28 @@ const About = () => {
     {
       title: 'Brenna Mahn',
       description: 'Team Lead',
-      avatar: avatar1,
-    },
-    {
-      title: 'Savien (Brooke) Love',
-      description: 'Design and Implementation Lead',
-      avatar: 'url_to_avatar_for_team_member_2',
-    },
-    {
-      title: 'Pinwen Mu',
-      description: 'Configuration Lead',
-      avatar: avatar3,
-    },
-    {
-      title: 'Natanim Eibrahim',
-      description: 'Security Lead',
-      avatar: 'url_to_avatar_for_team_member_3',
+      avatar: brenna,
     },
     {
       title: 'Fehmi Baltaci',
       description: 'QA Lead',
-      avatar: 'url_to_avatar_for_team_member_3',
+      avatar: fehmi,
+    },
+    {
+      title: 'Savien (Brooke) Love',
+      description: 'Design and Implementation Lead',
+      avatar: brooke,
+    },
+    {
+      title: 'Pinwen Mu',
+      description: 'Configuration Lead',
+      avatar: lillian,
+    },
+
+    {
+      title: 'Natanim Eibrahim',
+      description: 'Security Lead',
+      avatar: nati,
     },
   ];
 
