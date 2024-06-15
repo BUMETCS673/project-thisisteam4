@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
+import About from './pages//AboutPage/About.jsx';
 import Dashboard from './pages/Dasboard/Dashboard.jsx';
 import Project from './pages/ProjectCreation/FormCard.jsx';
+import Profile from './pages/ProfilePage/Profile.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 import './index.css';
 import Landing from './pages/Landing/Landing.jsx';
@@ -37,14 +39,14 @@ const router = createBrowserRouter([
         path: 'auth',
         element: <Authentication />,
       },
-      // {
-      //   path: 'about',
-      //   element: <About />, // "/about"
-      // },
-      // {
-      //   path: 'me',
-      //   element: <Profile />, //"/me"
-      // },
+      {
+        path: 'about',
+        element: <About />, // "/about"
+      },
+      {
+        path: 'me',
+        element: <Profile />, //"/me"
+      },
       // {
       //   path: 'project/:id',
       //   element: <Project />, //"/project/:id"
@@ -56,14 +58,9 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-// <<<<<<< lab3-brennamahn
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <RouterProvider router={router} />
-// =======
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <RouterProvider router={router} />
   </Provider>
-  // >>>>>>> iter2
 );
