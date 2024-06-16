@@ -1,4 +1,4 @@
-Feature: OrangeHRML Logo
+Feature: Project Portal Landing Page
 
   Scenario: Logo Presence on OrangeHRM Home Page
     Given launch chrome browser

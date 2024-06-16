@@ -3,23 +3,23 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from time import sleep
 
-# WELCOME PAGE XPATH LOCATORS
-project_portal_xpath = '//img[@alt="Project Portal"]'
-about_button_xpath = '//a[contains(text(), "ABOUT")]'
-dashboard_button_xpath = "//a[contains(text(), 'DASHBOARD')]"
-login_button_xpath = "//a[contains(text(), 'LOGIN')]"
-learn_more_button_xpath = "//button[contains(text(), 'LEARN MORE')]"
+# LANDING PAGE LOCATORS
+project_portal_locator = '//img[@alt="Project Portal"]'
+about_button_locator = '//a[contains(text(), "ABOUT")]'
+dashboard_button_locator = "//a[contains(text(), 'DASHBOARD')]"
+login_button_locator = "//a[contains(text(), 'LOGIN')]"
+learn_more_button_locator = "//button[contains(text(), 'LEARN MORE')]"
 
-# ABOUT PAGE XPATH LOCATORS
-about_us_p_xpath = "//div[@class='about']//p[1]"
-mission_statement_p_xpath = "//div[@class='about']//p[2]"
+# ABOUT PAGE LOCATORS
+about_us_p_locator = "//div[@class='about']//p[1]"
+mission_statement_p_locator = "//div[@class='about']//p[2]"
 
-# DASHBOARD PAGE XPATH LOCATORS
-search_submit_btn_xpath = "//button[@type='submit']"
-search_bar_xpath = "//input[@class='search-input']"
+# DASHBOARD PAGE LOCATORS
+search_submit_btn_locator = "//button[@type='submit']"
+search_bar_locator = "//input[@class='search-input']"
 search_class_dropdown_locator = "//select[@id='class-filter']"
 
-# LOGIN PAGE XPATH LOCATORS
+# LOGIN PAGE LOCATORS
 sign_in_btn_locator = "//p[contains(text(), 'SIGN IN')]"
 sign_up_btn_locator = "//p[contains(text(), 'SIGN UP')]"
 email_label_locator = "//label[@for='username']"
