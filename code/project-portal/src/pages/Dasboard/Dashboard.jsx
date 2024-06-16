@@ -1,14 +1,16 @@
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
-import Navbar from '../../components/Navbar/Navbar';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './Dashboard.css';
 import ProjectModal from '../../components/ProjectModal/ProjectModal';
+
 const Dashboard = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState([]);
 
   // this is where we would fetch the project data using fetch request
-  const projects = [
+  const projects = useMemo(() => [
     {
       title: 'Project 1',
       className: 'Class A',
@@ -24,8 +26,7 @@ const Dashboard = () => {
       title: 'Project 2',
       className: 'Class B',
       groupMembers: ['Dave', 'Eve', 'Frank'],
-      description:
-        'This project is about building a responsive web application.',
+      description: 'This project is about building a responsive web application.',
       tasks: [
         { title: 'Design UI', member: 'Dave' },
         { title: 'Implement frontend', member: 'Eve' },
@@ -36,8 +37,7 @@ const Dashboard = () => {
       title: 'Project 3',
       className: 'Class C',
       groupMembers: ['Grace', 'Heidi', 'Ivan'],
-      description:
-        'This project aims to create a mobile app for task management.',
+      description: 'This project aims to create a mobile app for task management.',
       tasks: [
         { title: 'Create wireframes', member: 'Grace' },
         { title: 'Develop mobile app', member: 'Heidi' },
@@ -59,8 +59,7 @@ const Dashboard = () => {
       title: 'Project 5',
       className: 'Class E',
       groupMembers: ['Mona', 'Nate', 'Olivia'],
-      description:
-        'This project is focused on data analysis and visualization.',
+      description: 'This project is focused on data analysis and visualization.',
       tasks: [
         { title: 'Collect data', member: 'Mona' },
         { title: 'Analyze data', member: 'Nate' },
@@ -122,20 +121,31 @@ const Dashboard = () => {
         { title: 'Perform regression testing', member: 'Daniel' },
       ],
     },
-  ];
+  ], []);
+
+  useEffect(() => {
+    setFilteredProjects(
+      projects.filter((project) =>
+        project.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+  }, [searchQuery, projects]);
+
   const handleModal = (project) => {
     setSelectedProject(project);
   };
+
   const closeModal = () => {
     setSelectedProject(null);
   };
+
   return (
     <main className="dashboard-section">
-      <SearchBar />
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {/* total amount of projects on page */}
-      <h2>({projects.length}) Projects</h2>
+      <h2>({filteredProjects.length}) Projects</h2>
       <section className="projects-container">
-        {projects.map((project, i) => (
+        {filteredProjects.map((project, i) => (
           <div key={i} onClick={() => handleModal(project)}>
             <ProjectCard project={project} />
           </div>
@@ -144,7 +154,6 @@ const Dashboard = () => {
       {selectedProject && (
         <div className="modal">
           <div className="modal-content">
-            {/* <button onClick={closeModal}>Close</button> */}
             <ProjectModal {...selectedProject} closeModal={closeModal} />
           </div>
         </div>
