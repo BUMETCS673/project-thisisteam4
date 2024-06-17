@@ -43,7 +43,8 @@ def i_see_the_sign_up_form(context):
 def i_sign_up_with_valid_email_and_valid_pwd(context, password):
     email_input = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.EMAIL_INPUT)
     delay_execution(1)
-    enter_text(email_input, generate_test_email(context))
+    context.email = generate_test_email()
+    enter_text(email_input, context.email)
 
     password_input = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.PASSWORD_INPUT)
     delay_execution(1)
