@@ -15,6 +15,7 @@ LOGIN_BUTTON = (By.XPATH, "//button[text()='Login']")
 REGISTER_BUTTON = (By.XPATH, "//button[text()='Register']")
 CREATE_BTN_LOCATOR = (By.XPATH, "//a[text()='CREATE']")
 PROFILE_BTN_LOCATOR = (By.XPATH, "//a[text()='PROFILE']")
+ERROR_MSG_LOCATOR = (By.XPATH, '//p[@class="error"]')
 
 WAIT_TIME = 5  # seconds
 
@@ -176,3 +177,45 @@ def step_impl(context):
     delay_execution(10)
     email_element = find_element_by_dynamic_xpath(context, context.test_email)
     assert email_element.is_displayed()
+
+
+@when(u'I sign up with invalid email "{email}" and invalid password "{password}"')
+def step_impl(context, email, password):
+    email_input = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.presence_of_element_located(EMAIL_INPUT)
+    )
+    email_input.clear()
+    delay_execution(5)
+    email_input.send_keys(email)
+
+    password_input = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.presence_of_element_located(PASSWORD_INPUT)
+    )
+    password_input.clear()
+    delay_execution(5)
+    password_input.send_keys(password)
+
+    re_pwd_input = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.presence_of_element_located(RE_PASSWORD_INPUT)
+    )
+    delay_execution(1)
+    re_pwd_input.send_keys(password)
+
+    register_button = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.element_to_be_clickable(REGISTER_BUTTON)
+    )
+    delay_execution(5)
+    register_button.click()
+
+
+@then(u'I see that sign up is not successful')
+def step_impl(context):
+    delay_execution(10)
+    re_pwd_input = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.presence_of_element_located(RE_PASSWORD_INPUT)
+    )
+    error_msg = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.presence_of_element_located(ERROR_MSG_LOCATOR)
+    )
+    assert error_msg.is_displayed()
+    assert re_pwd_input.is_displayed()
