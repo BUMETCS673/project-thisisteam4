@@ -9,21 +9,21 @@ const Dashboard = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projectTasks, setProjectTasks] = useState({});
 
-  // useEffect(() => {
-    // Fetch project data when the component mounts
-    // const fetchProjects = () => {
-    //   try {
-    //     const projectData = getAllProjects();
-    //     console.log(projectData) //results in promise pending because of CORS
-    //     setAllProjects(projectData);
-    //   } catch (error) {
-    //     setError('Failed to fetch projects. Please try again later.');
-    //     console.error('Error fetching projects:', error);
-    //   }
-    // };
+  useEffect(() => {
+   // Fetch project data when the component mounts
+    const fetchProjects = () => {
+      try {
+        const projectData = getAllProjects();
+        console.log(projectData) //results in promise pending because of CORS
+        setAllProjects(projectData);
+      } catch (error) {
+        setError('Failed to fetch projects. Please try again later.');
+        console.error('Error fetching projects:', error);
+      }
+    };
 
-  //   fetchProjects();
-  // }, []);
+    fetchProjects();
+  }, []);
 
   
 
