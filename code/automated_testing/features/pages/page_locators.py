@@ -1,3 +1,4 @@
+""" Page Locator for all the pages we have on Project Portal website"""
 from selenium.webdriver.common.by import By
 
 
