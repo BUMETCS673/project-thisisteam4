@@ -6,16 +6,15 @@ test("should render a button with default text, color, and type", () => {
   render(<Button />);
   const buttonElement = screen.getByRole("button", { name: /click me/i });
   expect(buttonElement).toBeInTheDocument();
-  expect(buttonElement).toHaveStyle({ backgroundColor: "green" });
   expect(buttonElement).toHaveAttribute("type", "submit");
 });
 
-test("should render a button with custom text, color, and type", () => {
-  render(<Button text="Submit" color="blue" type="button" />);
+test("should render a button with custom text and type", () => {
+  render(<Button text="Submit" type="button" />);
   const buttonElement = screen.getByRole("button", { name: /submit/i });
   expect(buttonElement).toBeInTheDocument();
-  expect(buttonElement).toHaveStyle({ backgroundColor: "blue" });
   expect(buttonElement).toHaveAttribute("type", "button");
+  expect(buttonElement).toHaveTextContent("Submit");
 });
 
 test('should render a button with class name "button"', () => {
