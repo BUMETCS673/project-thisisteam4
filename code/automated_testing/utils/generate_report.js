@@ -1,4 +1,6 @@
-// JS file that we use to generate html report after test run
+/**
+ * JS file to generate an HTML report after the test run using cucumber-html-reporter.
+ */
 
 const reporter = require('cucumber-html-reporter');
 const fs = require('fs');
@@ -6,11 +8,15 @@ const fs = require('fs');
 // Get the JSON file path from the command-line arguments
 const jsonFilePath = process.argv[2];
 
-// Read the JSON file
+/**
+ * Read the JSON file containing the test results.
+ */
 let rawdata = fs.readFileSync(jsonFilePath);
 let reportData = JSON.parse(rawdata);
 
-// Ensure each feature has a URI
+/**
+ * Ensure each feature has a URI and sanitize error messages in the steps.
+ */
 reportData.forEach(feature => {
     if (!feature.uri) {
         feature.uri = 'undefined';
@@ -27,7 +33,9 @@ reportData.forEach(feature => {
     });
 });
 
-// Write the updated JSON back to the same file
+/**
+ * Configuration options for the cucumber-html-reporter.
+ */
 fs.writeFileSync(jsonFilePath, JSON.stringify(reportData, null, 2));
 
 const options = {
@@ -46,4 +54,7 @@ const options = {
     }
 };
 
+/**
+ * Generate the HTML report using the cucumber-html-reporter with the specified options.
+ */
 reporter.generate(options);

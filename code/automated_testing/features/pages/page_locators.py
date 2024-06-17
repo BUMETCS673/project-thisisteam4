@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class PageLocators:
+    """ A class for holding all the locator tuples for the Project Portal website. """
     # LANDING PAGE LOCATORS
     PROJECT_PORTAL_LOCATOR = (By.XPATH, '//img[@alt="Project Portal"]')
     ABOUT_BUTTON_LOCATOR = (By.XPATH, '//a[contains(text(), "ABOUT")]')

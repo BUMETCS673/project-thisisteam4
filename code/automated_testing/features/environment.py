@@ -6,6 +6,11 @@ from datetime import datetime
 
 
 def before_all(context):
+    """
+    Set up the test environment before all tests are run.
+
+    :param context: Behave context object that holds information about the test run.
+    """
     # Ensure the logs directory exists
     logs_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs')
     if not os.path.exists(logs_path):
@@ -28,9 +33,10 @@ def before_all(context):
     context.logger = logger
     context.logger.info('Logger is configured and logging is started')
 
+    # Set up Selenium WebDriver for Chrome
     chrome_driver_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'drivers', 'chromedriver.exe')
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+    chrome_options.binary_location = 'C:/Program Files/Google/Chrome/Application/chrome.exe'  # IMPORTANT
     service = Service(chrome_driver_path)
     context.driver = webdriver.Chrome(service=service, options=chrome_options)
     context.driver.maximize_window()
@@ -38,16 +44,33 @@ def before_all(context):
 
 
 def after_all(context):
+    """
+    Clean up the test environment after all tests have run.
+
+    :param context: Behave context object that holds information about the test run.
+    """
     if hasattr(context, 'driver'):
         context.driver.quit()
         context.logger.info('Chrome browser closed')
 
 
 def before_scenario(context, scenario):
+    """
+    Actions to be performed before each scenario.
+
+    :param context: Behave context object that holds information about the test run.
+    :param scenario: The scenario object that is about to be executed.
+    """
     context.logger.info(f'Starting scenario: {scenario.name}')
 
 
 def after_scenario(context, scenario):
+    """
+    Actions to be performed after each scenario.
+
+    :param context: Behave context object that holds information about the test run.
+    :param scenario: The scenario object that has just been executed.
+    """
     if scenario.status == "failed":
         context.logger.error(f'Scenario failed: {scenario.name}')
     else:
@@ -55,10 +78,22 @@ def after_scenario(context, scenario):
 
 
 def before_step(context, step):
+    """
+    Actions to be performed before each step.
+
+    :param context: Behave context object that holds information about the test run.
+    :param step: The step object that is about to be executed.
+    """
     context.logger.info(f'Starting step: {step.name}')
 
 
 def after_step(context, step):
+    """
+    Actions to be performed after each step.
+
+    :param context: Behave context object that holds information about the test run.
+    :param step: The step object that has just been executed.
+    """
     if step.status == "failed":
         context.logger.error(f'Step failed: {step.name}')
     else:

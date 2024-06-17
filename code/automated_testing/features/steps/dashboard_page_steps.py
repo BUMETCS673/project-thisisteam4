@@ -8,6 +8,7 @@ from code.automated_testing.utils.selenium_utils import wait_for_element, enter_
 
 @when(u'I enter "{search_text}" in the search bar')
 def enter_search_text(context, search_text):
+    context.logger.info(f'I enter "{search_text}" in the search bar')
     search_bar = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.SEARCH_BAR)
     delay_execution(5)
     enter_text(search_bar, search_text)
@@ -15,6 +16,7 @@ def enter_search_text(context, search_text):
 
 @when(u'I select Class 2 from the class dropdown')
 def select_class(context):
+    context.logger.info('I select Class 2 from the class dropdown')
     class_dropdown = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.SEARCH_CLASS_DROPDOWN)
     class_dropdown.click()
 
@@ -25,18 +27,21 @@ def select_class(context):
 
 @when(u'I click the submit button')
 def click_submit_button(context):
+    context.logger.info('I click the submit button -- This will be implemented later.')
     # This will be implemented later.
     pass
 
 
 @then(u'I should see the search results for "{search_text}"')
 def verify_search_results(context, search_text):
+    context.logger.info(f'I should see the search results for "{search_text}" -- This will be implemented later.')
     # This will be implemented later.
     pass
 
 
 @then(u'I see the dashboard page with projects')
 def i_see_the_dashboard_page_with_projects(context):
+    context.logger.info(f'I see the dashboard page with projects')
     project_1_card = wait_for_element(driver=context.driver, wait_time=5,
                                       locator=PageLocators.PROJECT_1_CARD_DASHBOARD)
 

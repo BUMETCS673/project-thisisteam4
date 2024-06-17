@@ -6,16 +6,29 @@ import subprocess
 from datetime import datetime
 
 
-def find_feature_files(directory):
-    feature_files = []
+def find_feature_files(directory: str):
+    """
+    Find all feature files in the given directory and its subdirectories.
+
+    :param directory: Directory we're looking into for the feature files.
+    :return: Returns list of feature files.
+    """
+    feature_files_list = []
     for root, _, files in os.walk(directory):
         for file in files:
             if file.endswith(".feature"):
-                feature_files.append(os.path.join(root, file))
-    return feature_files
+                feature_files_list.append(os.path.join(root, file))
+    return feature_files_list
 
 
-def run_behave(feature_files, tags):
+def run_behave(feature_files_list: list, tags: str) -> str:
+    """
+    Run Behave tests for the specified feature files or tags.
+
+    :param feature_files_list: Feature files as list.
+    :param tags: Tags in --tags=@tag_name format to filter scenarios.
+    :return: str: The path to the generated JSON report.
+    """
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     report_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reports')
     if not os.path.exists(report_dir):
@@ -26,7 +39,7 @@ def run_behave(feature_files, tags):
     print(f"Report will be created at: {report_path}")
 
     # Create the Behave command with the specified feature files and tags
-    feature_paths = " ".join(feature_files)
+    feature_paths = " ".join(feature_files_list)
     tag_option = f"--tags={tags}" if tags else ""
     command = f'behave {feature_paths} {tag_option} --format json --outfile={report_path}'
     print(f"Running command: {command}")
@@ -35,7 +48,12 @@ def run_behave(feature_files, tags):
     return report_path
 
 
-def generate_html_report(report_path):
+def generate_html_report(report_path: str):
+    """
+    Generate an HTML report from the JSON report.
+
+    :param report_path: The path to the JSON report file.
+    """
     # Get the path to the generate_report.js script
     script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     generate_report_script = os.path.join(script_dir, 'utils', 'generate_report.js')

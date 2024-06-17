@@ -8,12 +8,14 @@ from code.automated_testing.utils.selenium_utils import wait_for_element, enter_
 
 @when(u'I click on the first project card for more details')
 def i_click_on_the_first_project_card_for_more_details(context):
+    context.logger.info('I click on the first project card for more details')
     project_1_card = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.PROJECT_1_CARD_DASHBOARD)
     project_1_card.click()
 
 
 @then(u'I see projects details')
 def i_see_projects_details(context):
+    context.logger.info('I see projects details')
     delay_execution(10)
     project_name = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.PROJECT_NAME_TEXT_LOCATOR)
     project_class = wait_for_element(driver=context.driver, wait_time=5,
@@ -27,12 +29,14 @@ def i_see_projects_details(context):
 
 @when(u'I click on Create button')
 def step_impl(context):
+    context.logger.info('I click on Create button')
     create_btn = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.CREATE_BTN_LOCATOR)
     create_btn.click()
 
 
 @then(u'I see the form for creating a project')
 def step_impl(context):
+    context.logger.info('I see the form for creating a project')
     project_form_add_project_txt = wait_for_element(driver=context.driver, wait_time=5,
                                                     locator=PageLocators.PROJECT_FORM_ADD_A_PROJECT_TXT_LOCATOR)
     project_form_name = wait_for_element(driver=context.driver, wait_time=5,
@@ -47,6 +51,7 @@ def step_impl(context):
 
 @when(u'I create a project with valid inputs')
 def step_impl(context):
+    context.logger.info('I create a project with valid inputs')
     project_form_name = wait_for_element(driver=context.driver, wait_time=5,
                                          locator=PageLocators.PROJECT_FORM_NAME_LOCATOR)
     project_form_owner = wait_for_element(driver=context.driver, wait_time=5,
@@ -78,6 +83,7 @@ def step_impl(context):
 
 @then(u'I see project created successfully')
 def step_impl(context):
+    context.logger.info('I see project created successfully -- This will be implemented later')
     # This will be implemented later
     #
     # create_project_btn = wait_for_element(driver=context.driver, wait_time=5,
