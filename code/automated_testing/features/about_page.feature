@@ -1,7 +1,7 @@
 Feature: About Page
 
   @regression_suite
-  Scenario: User visits the landing page and navigates to the About page
+  Scenario: About Page Regression
     Given I am on the landing page
     When I click on the About button
     Then I should be redirected to the About page

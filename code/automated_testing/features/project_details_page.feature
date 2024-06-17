@@ -2,7 +2,7 @@ Feature: Project Details Sidewindow
 
   @smoke_suite
   @regression_suite
-  Scenario: User visits the login page and logs in
+  Scenario: Project Details Side Window
     Given I am on the landing page
     When I click on the Dashboard button
     Then I see the dashboard page with projects
@@ -10,7 +10,7 @@ Feature: Project Details Sidewindow
     Then I see projects details
 
   @regression_suite
-  Scenario Outline: User visits the login page and logs in
+  Scenario Outline: Create a Project
     Given I am on the landing page
     When I click on the Login button
     Then I should be redirected to the Login page

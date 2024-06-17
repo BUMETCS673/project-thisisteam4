@@ -1,3 +1,5 @@
+""" Step Definitions for Login Page """
+
 from behave import *
 from code.automated_testing.features.pages.page_locators import PageLocators
 from code.automated_testing.utils.utils import delay_execution, generate_test_email

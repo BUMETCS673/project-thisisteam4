@@ -1,3 +1,5 @@
+""" Runner class to run suite(s) or feature file(s) """
+
 import os
 import sys
 import subprocess

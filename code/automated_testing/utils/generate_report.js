@@ -1,3 +1,5 @@
+// JS file that we use to generate html report after test run
+
 const reporter = require('cucumber-html-reporter');
 const fs = require('fs');
 

@@ -1,7 +1,7 @@
 Feature: Login Page
 
   @smoke_suite
-  @regression_suite
+    @regression_suite
   Scenario Outline: User visits the login page and logs in
     Given I am on the landing page
     When I click on the Login button
@@ -22,8 +22,8 @@ Feature: Login Page
       | T9@bRg78BwhS&% |
 
   @smoke_suite
-  @regression_suite
-  Scenario Outline: User visits the login page and logs in
+    @regression_suite
+  Scenario Outline: User visits the login page and tries to log in with invalid email and password
     Given I am on the landing page
     When I click on the Login button
     Then I should be redirected to the Login page

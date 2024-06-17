@@ -1,3 +1,5 @@
+""" Step Definitions for Project Details Page """
+
 from behave import *
 from code.automated_testing.features.pages.page_locators import PageLocators
 from code.automated_testing.utils.utils import delay_execution, get_current_time

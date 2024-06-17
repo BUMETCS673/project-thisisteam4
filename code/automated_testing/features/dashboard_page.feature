@@ -1,7 +1,7 @@
 Feature: Dashboard Page
 
   @regression_suite
-  Scenario: User searches for a project on the dashboard
+  Scenario: Dashboard Regression
     Given I am on the landing page
     When I click on the Dashboard button
     Then I see the dashboard page with projects

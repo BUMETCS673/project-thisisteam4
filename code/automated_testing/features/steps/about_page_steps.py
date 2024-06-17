@@ -1,3 +1,5 @@
+""" Step Definitions for About Page """
+
 from behave import *
 from code.automated_testing.features.pages.page_locators import PageLocators
 from code.automated_testing.utils.selenium_utils import wait_for_element
