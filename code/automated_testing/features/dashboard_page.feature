@@ -1,5 +1,6 @@
 Feature: Dashboard Page
 
+  @regression_suite
   Scenario: User searches for a project on the dashboard
     Given I am on the landing page
     When I click on the Dashboard button

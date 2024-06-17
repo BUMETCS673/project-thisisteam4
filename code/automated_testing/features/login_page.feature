@@ -1,5 +1,7 @@
 Feature: Login Page
 
+  @smoke_suite
+  @regression_suite
   Scenario Outline: User visits the login page and logs in
     Given I am on the landing page
     When I click on the Login button
@@ -19,6 +21,8 @@ Feature: Login Page
       | password       |
       | T9@bRg78BwhS&% |
 
+  @smoke_suite
+  @regression_suite
   Scenario Outline: User visits the login page and logs in
     Given I am on the landing page
     When I click on the Login button
@@ -31,5 +35,5 @@ Feature: Login Page
     Then I see that sign up is not successful
 
     Examples:
-      | email                     | password   |
+      | email                      | password   |
       | invalidemail@123?email.com | invalidpwd |

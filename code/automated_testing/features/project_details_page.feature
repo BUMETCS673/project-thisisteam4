@@ -1,5 +1,7 @@
 Feature: Project Details Sidewindow
 
+  @smoke_suite
+  @regression_suite
   Scenario: User visits the login page and logs in
     Given I am on the landing page
     When I click on the Dashboard button
@@ -7,6 +9,7 @@ Feature: Project Details Sidewindow
     When I click on the first project card for more details
     Then I see projects details
 
+  @regression_suite
   Scenario Outline: User visits the login page and logs in
     Given I am on the landing page
     When I click on the Login button
