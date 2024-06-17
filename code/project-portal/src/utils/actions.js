@@ -1,5 +1,5 @@
-import { json } from 'react-router-dom';
-const API_URL = 'http://127.0.0.1:82/apiv1';
+import { json } from "react-router-dom";
+const API_URL = "https://promanager-v1-b1f0addf3fcb.herokuapp.com/apiv1";
 
 //Projects
 /**
@@ -10,17 +10,17 @@ const API_URL = 'http://127.0.0.1:82/apiv1';
 export const getAllProjects = async (authToken) => {
   try {
     const response = await fetch(`${API_URL}/project/getallprojects`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        Authorization: 'Bearer ' + authToken,
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + authToken,
+        "Content-Type": "application/json",
       },
     });
 
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to get all projects.' },
+        { message: response.message || "Failed to get all projects." },
         { status: 500 }
       );
     }
@@ -28,7 +28,7 @@ export const getAllProjects = async (authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Get all projects error: ', error);
+    console.log("Get all projects error: ", error);
   }
 };
 /**
@@ -42,10 +42,10 @@ export const getProjectById = async (projectId, authToken) => {
     const response = await fetch(
       `${API_URL}/project/getIdWiseProject/${projectId} `,
       {
-        method: 'GET',
+        method: "GET",
         headers: {
-          Authorization: 'Bearer ' + authToken,
-          'Content-Type': 'application/json',
+          Authorization: "Bearer " + authToken,
+          "Content-Type": "application/json",
         },
       }
     );
@@ -64,7 +64,7 @@ export const getProjectById = async (projectId, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Get project error: ', error);
+    console.log("Get project error: ", error);
   }
 };
 
@@ -77,10 +77,10 @@ export const getProjectById = async (projectId, authToken) => {
 export const createProject = async (projectData, authToken) => {
   try {
     const response = await fetch(`${API_URL}/addprojects`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Authorization: 'Bearer ' + authToken,
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + authToken,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(projectData),
     });
@@ -88,7 +88,7 @@ export const createProject = async (projectData, authToken) => {
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to create project.' },
+        { message: response.message || "Failed to create project." },
         { status: 500 }
       );
     }
@@ -96,7 +96,7 @@ export const createProject = async (projectData, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Create project error: ', error);
+    console.log("Create project error: ", error);
   }
 };
 
@@ -112,10 +112,10 @@ export const updateProject = async (projectId, projectData, authToken) => {
     const response = await fetch(
       `${API_URL}/project/editProject/${projectId}`,
       {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          Authorization: 'Bearer ' + authToken,
-          'Content-Type': 'application/json',
+          Authorization: "Bearer " + authToken,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(projectData),
       }
@@ -124,7 +124,7 @@ export const updateProject = async (projectId, projectData, authToken) => {
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to update project.' },
+        { message: response.message || "Failed to update project." },
         { status: 500 }
       );
     }
@@ -132,7 +132,7 @@ export const updateProject = async (projectId, projectData, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Update project error: ', error);
+    console.log("Update project error: ", error);
   }
 };
 
@@ -147,10 +147,10 @@ export const deleteProject = async (projectId, authToken) => {
     const response = await fetch(
       `${API_URL}/project/deleteproject/${projectId}`,
       {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          Authorization: 'Bearer ' + authToken,
-          'Content-Type': 'application/json',
+          Authorization: "Bearer " + authToken,
+          "Content-Type": "application/json",
         },
       }
     );
@@ -158,7 +158,7 @@ export const deleteProject = async (projectId, authToken) => {
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to delete project.' },
+        { message: response.message || "Failed to delete project." },
         { status: 500 }
       );
     }
@@ -166,7 +166,7 @@ export const deleteProject = async (projectId, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Delete project error: ', error);
+    console.log("Delete project error: ", error);
   }
 };
 
@@ -182,10 +182,10 @@ export const getAllTasks = async (projectId, authToken) => {
     const response = await fetch(
       `${API_URL}/task/project/getalltasks/${projectId}`,
       {
-        method: 'GET',
+        method: "GET",
         headers: {
-          Authorization: 'Bearer ' + authToken,
-          'Content-Type': 'application/json',
+          Authorization: "Bearer " + authToken,
+          "Content-Type": "application/json",
         },
       }
     );
@@ -193,7 +193,7 @@ export const getAllTasks = async (projectId, authToken) => {
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to get the tasks.' },
+        { message: response.message || "Failed to get the tasks." },
         { status: 500 }
       );
     }
@@ -201,7 +201,7 @@ export const getAllTasks = async (projectId, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Get all tasks error: ', error);
+    console.log("Get all tasks error: ", error);
   }
 };
 
@@ -215,17 +215,17 @@ export const getAllTasks = async (projectId, authToken) => {
 export const getAllComments = async (projectId, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${projectId}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        Authorization: 'Bearer ' + authToken,
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + authToken,
+        "Content-Type": "application/json",
       },
     });
 
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to get the comments.' },
+        { message: response.message || "Failed to get the comments." },
         { status: 500 }
       );
     }
@@ -233,7 +233,7 @@ export const getAllComments = async (projectId, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Get all comments error: ', error);
+    console.log("Get all comments error: ", error);
   }
 };
 
@@ -247,10 +247,10 @@ export const getAllComments = async (projectId, authToken) => {
 export const addComment = async (projectId, commentData, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${projectId}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Authorization: 'Bearer ' + authToken,
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + authToken,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(commentData),
     });
@@ -258,7 +258,7 @@ export const addComment = async (projectId, commentData, authToken) => {
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to add comment.' },
+        { message: response.message || "Failed to add comment." },
         { status: 500 }
       );
     }
@@ -266,7 +266,7 @@ export const addComment = async (projectId, commentData, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Add comment error: ', error);
+    console.log("Add comment error: ", error);
   }
 };
 
@@ -280,10 +280,10 @@ export const addComment = async (projectId, commentData, authToken) => {
 export const editComment = async (commentId, commentData, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${commentId}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        Authorization: 'Bearer ' + authToken,
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + authToken,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(commentData),
     });
@@ -291,7 +291,7 @@ export const editComment = async (commentId, commentData, authToken) => {
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to edit comment.' },
+        { message: response.message || "Failed to edit comment." },
         { status: 500 }
       );
     }
@@ -299,7 +299,7 @@ export const editComment = async (commentId, commentData, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Edit comment error: ', error);
+    console.log("Edit comment error: ", error);
   }
 };
 
@@ -312,17 +312,17 @@ export const editComment = async (commentId, commentData, authToken) => {
 export const deleteComment = async (projectId, authToken) => {
   try {
     const response = await fetch(`${API_URL}/comments/${projectId}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        Authorization: 'Bearer ' + authToken,
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + authToken,
+        "Content-Type": "application/json",
       },
     });
 
     //checking if the request has a failed response
     if (!response.ok) {
       throw json(
-        { message: response.message || 'Failed to delete comment.' },
+        { message: response.message || "Failed to delete comment." },
         { status: 500 }
       );
     }
@@ -330,6 +330,6 @@ export const deleteComment = async (projectId, authToken) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('Delete comment error: ', error);
+    console.log("Delete comment error: ", error);
   }
 };

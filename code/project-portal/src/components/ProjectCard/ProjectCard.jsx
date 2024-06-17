@@ -1,25 +1,27 @@
 import './ProjectCard.css';
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, taskCount}) => {
   return (
     <section className="projectCard" role="article">
       <header>
-        <h3>{project.title}</h3>
+        <h3>{project.projectname}</h3>
         <div>
           <ul>
             {' '}
-            {project.groupMembers.map((member, index) => (
+            {/* {project.groupMembers.map((member, index) => (
               <li key={index}>{member.charAt(0)}</li>
-            ))}
+            ))} */}
+            <li>{project.owner_id}</li>
           </ul>
         </div>
       </header>
       <main>
         <div className="scrollable-content">
+          <p>PROJECT TYPE: {project.type}</p>
           <p>{project.description}</p>
         </div>
       </main>
       <footer>
-        <p>Total Task Percentage</p>
+        <p>Total Tasks Created: {taskCount}</p>
         {/* progress bar */}
       </footer>
     </section>
