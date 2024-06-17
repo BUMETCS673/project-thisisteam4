@@ -60,7 +60,7 @@ def i_should_see_the_sign_up_button(context):
 
 
 @when(u'I click on the Sign Up button')
-def step_impl(context):
+def i_click_on_the_sign_up_btn(context):
     sign_up_btn = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.element_to_be_clickable(SIGN_UP_BTN)
     )
@@ -68,7 +68,7 @@ def step_impl(context):
 
 
 @then(u'I see the Sign Up Form')
-def step_impl(context):
+def i_see_the_sign_up_form(context):
     email_input = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.presence_of_element_located(EMAIL_INPUT)
     )
@@ -84,7 +84,7 @@ def step_impl(context):
 
 
 @when(u'I sign up with valid email and valid password "{password}"')
-def step_impl(context, password):
+def i_sign_up_with_valid_email_and_valid_pwd(context, password):
     email_input = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.presence_of_element_located(EMAIL_INPUT)
     )
@@ -114,7 +114,7 @@ def step_impl(context, password):
 
 
 @then(u'I should see the sign in page')
-def step_impl(context):
+def i_should_see_the_sign_in_page(context):
     delay_execution(10)
     email_input = WebDriverWait(context.driver, 5).until(
         ec.presence_of_element_located(EMAIL_INPUT)
@@ -128,7 +128,7 @@ def step_impl(context):
 
 
 @when(u'I sign in with valid email and valid password "{password}"')
-def step_impl(context, password):
+def i_sign_in_with_valid_email_and_valid_pwd(context, password):
     email_input = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.presence_of_element_located(EMAIL_INPUT)
     )
@@ -152,7 +152,7 @@ def step_impl(context, password):
 
 
 @then(u'I should be signed in successfully')
-def step_impl(context):
+def i_should_be_signed_in_successfully(context):
     delay_execution(5)
     profile_btn = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.element_to_be_clickable(PROFILE_BTN_LOCATOR)
@@ -165,7 +165,7 @@ def step_impl(context):
 
 
 @when(u'I click on the Profile button')
-def step_impl(context):
+def i_click_on_the_profile_btn(context):
     profile_btn = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.element_to_be_clickable(PROFILE_BTN_LOCATOR)
     )
@@ -173,14 +173,14 @@ def step_impl(context):
 
 
 @then(u'I see my email address displayed in Profile page')
-def step_impl(context):
+def i_see_my_email_address_displayed_in_profile_page(context):
     delay_execution(10)
     email_element = find_element_by_dynamic_xpath(context, context.test_email)
     assert email_element.is_displayed()
 
 
 @when(u'I sign up with invalid email "{email}" and invalid password "{password}"')
-def step_impl(context, email, password):
+def i_signup_with_invalid_email_and_invalid_pwd(context, email, password):
     email_input = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.presence_of_element_located(EMAIL_INPUT)
     )
@@ -209,7 +209,7 @@ def step_impl(context, email, password):
 
 
 @then(u'I see that sign up is not successful')
-def step_impl(context):
+def i_see_that_signup_is_not_successful(context):
     delay_execution(10)
     re_pwd_input = WebDriverWait(context.driver, WAIT_TIME).until(
         ec.presence_of_element_located(RE_PASSWORD_INPUT)
