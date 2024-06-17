@@ -8,6 +8,7 @@ import ProjectModal from '../../components/ProjectModal/ProjectModal';
 const Dashboard = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projectTasks, setProjectTasks] = useState({});
+  console.log("dashboard")
 
   useEffect(() => {
    // Fetch project data when the component mounts

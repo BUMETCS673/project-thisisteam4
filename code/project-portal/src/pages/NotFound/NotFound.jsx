@@ -6,7 +6,7 @@ const NotFound = () => {
         <h1>404</h1>
         <h3>Not Found</h3>
         {/* link to homepage */}
-        <a href="/dasboard">Go Back to Home</a>
+        <a href="/">Go Back to Home</a>
         </main>
     )
 } 
