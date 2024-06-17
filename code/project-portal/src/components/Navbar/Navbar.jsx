@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logoutSuccess } from '../../store/userSlice'; // 确认路径正确
-import projectPortalImage from '../../assets/images/2.png';
-import './Navbar.css';
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutSuccess } from "../../store/userSlice"; // 确认路径正确
+import projectPortalImage from "../../assets/images/2.png";
+import "./Navbar.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const [isOpen, setIsOpen] = useState(false);
+  const { isLoading, logout } = useAuth0();
 
   const handleLogout = (e) => {
     e.preventDefault();
+    logout();
 
     dispatch(logoutSuccess());
 
-    navigate('/auth');
+    navigate("/auth");
   };
 
   const toggleMenu = () => {
@@ -36,12 +39,13 @@ const Navbar = () => {
         <button className="navbar-toggle" onClick={toggleMenu}>
           ☰
         </button>
-        <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
           <li className="navbar-item">
             <NavLink
               to="/about"
-              className="navbar-link"
-              activeClassName="active"
+              className={({ isActive }) =>
+                isActive ? "navbar-link active" : "navbar-link"
+              }
             >
               ABOUT
             </NavLink>
@@ -49,19 +53,21 @@ const Navbar = () => {
           <li className="navbar-item">
             <NavLink
               to="/dashboard"
-              className="navbar-link"
-              activeClassName="active"
+              className={({ isActive }) =>
+                isActive ? "navbar-link active" : "navbar-link"
+              }
             >
               DASHBOARD
             </NavLink>
           </li>
-          {isAuthenticated && (
+          {(isAuthenticated || isLoading) && (
             <>
               <li className="navbar-item">
                 <NavLink
                   to="/me"
-                  className="navbar-link"
-                  activeClassName="active"
+                  className={({ isActive }) =>
+                    isActive ? "navbar-link active" : "navbar-link"
+                  }
                 >
                   PROFILE
                 </NavLink>
@@ -69,8 +75,9 @@ const Navbar = () => {
               <li className="navbar-item">
                 <NavLink
                   to="/project/"
-                  className="navbar-link"
-                  activeClassName="active"
+                  className={({ isActive }) =>
+                    isActive ? "navbar-link active" : "navbar-link"
+                  }
                 >
                   CREATE
                 </NavLink>
@@ -78,8 +85,9 @@ const Navbar = () => {
               <li className="navbar-item">
                 <NavLink
                   to="/auth"
-                  className="navbar-link"
-                  activeClassName="active"
+                  className={({ isActive }) =>
+                    isActive ? "navbar-link active" : "navbar-link"
+                  }
                   onClick={handleLogout}
                 >
                   LOGOUT
@@ -87,12 +95,13 @@ const Navbar = () => {
               </li>
             </>
           )}
-          {!isAuthenticated && (
+          {!isLoading && !isAuthenticated && (
             <li className="navbar-item">
               <NavLink
                 to="/auth"
-                className="navbar-link"
-                activeClassName="active"
+                className={({ isActive }) =>
+                  isActive ? "navbar-link active" : "navbar-link"
+                }
               >
                 LOGIN
               </NavLink>
