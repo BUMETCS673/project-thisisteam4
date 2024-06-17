@@ -11,6 +11,8 @@ SEARCH_CLASS_DROPDOWN = (By.XPATH, "//select[@name='filter-options']")
 SEARCH_CLASS_DROPDOWN_OPTION_1 = (By.XPATH, "//option[@value='class-1']")
 SEARCH_CLASS_DROPDOWN_OPTION_2 = (By.XPATH, "//option[@value='class-2']")
 SEARCH_CLASS_DROPDOWN_OPTION_3 = (By.XPATH, "//option[@value='class-3']")
+PROJECT_1_CARD_DASHBOARD = (By.XPATH, "//section[@class='projectCard']//h3[text()='Project 1']")
+PROJECT_2_CARD_DASHBOARD = (By.XPATH, "//section[@class='projectCard']//h3[text()='Project 1']")
 
 WAIT_TIME = 5  # seconds
 
@@ -52,3 +54,15 @@ def click_submit_button(context):
 def verify_search_results(context, search_text):
     # This will be implemented later.
     pass
+
+
+@then(u'I see the dashboard page with projects')
+def i_see_the_dashboard_page_with_projects(context):
+    project_1_card = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.presence_of_element_located(PROJECT_1_CARD_DASHBOARD)
+    )
+    project_2_card = WebDriverWait(context.driver, WAIT_TIME).until(
+        ec.presence_of_element_located(PROJECT_2_CARD_DASHBOARD)
+    )
+    assert project_1_card.is_displayed()
+    assert project_2_card.is_displayed()
