@@ -6,10 +6,15 @@ Feature: Login Page
     Then I should be redirected to the Login page
     Then I should see the Sign In button
     Then I should see the Sign Up button
-    When I signin with valid email "<email>" and valid password "<password>"
-    Then I should be logged in
+    When I click on the Sign Up button
+    Then I see the Sign Up Form
+    When I sign up with valid email and valid password "<password>"
+    Then I should see the sign in page
+    When I sign in with valid email and valid password "<password>"
+    Then I should be signed in successfully
+    When I click on the Profile button
+    Then I see my email address displayed in Profile page
 
     Examples:
-      | email               | password   |
-      | testing_1@email.com | password   |
-      | testing_2@email.com | anotherpwd |
+      | password       |
+      | T9@bRg78BwhS&% |
