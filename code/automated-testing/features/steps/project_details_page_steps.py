@@ -19,7 +19,7 @@ PROJECT_FORM_DESC_LOCATOR = (By.XPATH, "//textarea[@name='description']")
 PROJECT_FORM_TYPE_LOCATOR = (By.XPATH, "//input[@name='type']")
 PROJECT_FORM_STATUS_LOCATOR = (By.XPATH, "//input[@name='status']")
 PROJECT_FORM_COMP_DATE_LOCATOR = (By.XPATH, "//input[@name='completionDate']")
-
+CREATE_PROJECT_BTN_LOCATOR = (By.XPATH, "//button[@class='submit-button']")
 CREATE_BTN_LOCATOR = (By.XPATH, "//a[text()='CREATE']")
 
 WAIT_TIME = 5  # seconds
@@ -120,4 +120,9 @@ def step_impl(context):
 @then(u'I see project created successfully')
 def step_impl(context):
     # This will be implemented later
+    #
+    # create_project_btn = WebDriverWait(context.driver, WAIT_TIME).until(
+    #     ec.presence_of_element_located(CREATE_PROJECT_BTN_LOCATOR)
+    # )
+    # create_project_btn.click()
     pass
