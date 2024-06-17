@@ -21,7 +21,7 @@ def i_am_on_the_dashboard_page(context):
 @when(u'I enter "{search_text}" in the search bar')
 def enter_search_text(context, search_text):
     search_bar = WebDriverWait(context.driver, WAIT_TIME).until(
-        EC.presence_of_element_located(DashboardPageLocators.SEARCH_BAR)
+        EC.presence_of_element_located(SEARCH_BAR)
     )
     search_bar.clear()
     search_bar.send_keys(search_text)
@@ -30,7 +30,7 @@ def enter_search_text(context, search_text):
 @when(u'I select "{class_name}" from the class dropdown')
 def select_class(context, class_name):
     class_dropdown = WebDriverWait(context.driver, WAIT_TIME).until(
-        EC.presence_of_element_located(DashboardPageLocators.SEARCH_CLASS_DROPDOWN)
+        EC.presence_of_element_located(SEARCH_CLASS_DROPDOWN)
     )
     for option in class_dropdown.find_elements_by_tag_name('option'):
         if option.text == class_name:
@@ -41,7 +41,7 @@ def select_class(context, class_name):
 @when(u'I click the submit button')
 def click_submit_button(context):
     submit_button = WebDriverWait(context.driver, WAIT_TIME).until(
-        EC.element_to_be_clickable(DashboardPageLocators.SEARCH_SUBMIT_BTN)
+        EC.element_to_be_clickable(SEARCH_SUBMIT_BTN)
     )
     submit_button.click()
 
