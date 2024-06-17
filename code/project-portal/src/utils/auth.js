@@ -125,7 +125,7 @@ export const loginUser = async (
     }
 
     const data = await response.json();
-    //console.log(data)
+    console.log(data);
     const stateData = {
       user: data.user,
       token: data.token,
@@ -140,7 +140,7 @@ export const loginUser = async (
     //setUserData(userData)
 
     dispatch(loginSuccess(stateData));
-    return navigate("/dashboard");
+    return navigate("/me");
   } catch (error) {
     console.log("Login User error: ", error);
   }
