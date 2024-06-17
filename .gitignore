@@ -1,7 +1,4 @@
-
+/.idea
 /code/automated_testing/features/logs
 /code/automated_testing/features/reports
-/.idea
 /code/automated_testing/node_modules/
-/code/automated_testing/features/pages/__pycache__
-/code/automated_testing/utils/__pycache__
