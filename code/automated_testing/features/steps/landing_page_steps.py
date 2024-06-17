@@ -1,12 +1,6 @@
 from behave import *
-from selenium.webdriver.common.by import By
-import time
-
-PROJECT_PORTAL_LOCATOR = '//img[@alt="Project Portal"]'
-ABOUT_BUTTON_LOCATOR = '//a[contains(text(), "ABOUT")]'
-DASHBOARD_BUTTON_LOCATOR = "//a[contains(text(), 'DASHBOARD')]"
-LOGIN_BUTTON_LOCATOR = "//a[contains(text(), 'LOGIN')]"
-LEARN_MORE_BUTTON_LOCATOR = "//button[contains(text(), 'LEARN MORE')]"
+from code.automated_testing.features.pages.page_locators import PageLocators
+from code.automated_testing.utils.selenium_utils import wait_for_element
 
 
 @given(u'I am on the landing page')
@@ -16,7 +10,7 @@ def i_am_on_the_landing_page(context):
 
 @when(u'I click on the About button')
 def i_click_on_the_about_btn(context):
-    about_button = context.driver.find_element(By.XPATH, ABOUT_BUTTON_LOCATOR)
+    about_button = wait_for_element(driver=context.driver, wait_time=5, locator=PageLocators.ABOUT_BUTTON_LOCATOR)
     about_button.click()
 
 
@@ -27,7 +21,8 @@ def i_should_be_on_about_page(context):
 
 @when(u'I click on the Dashboard button')
 def i_click_on_the_dashboard_btn(context):
-    dashboard_button = context.driver.find_element(By.XPATH, DASHBOARD_BUTTON_LOCATOR)
+    dashboard_button = wait_for_element(driver=context.driver, wait_time=5,
+                                        locator=PageLocators.DASHBOARD_BUTTON_LOCATOR)
     dashboard_button.click()
 
 
@@ -38,7 +33,8 @@ def i_should_be_on_dashboard_page(context):
 
 @when(u'I click on the Login button')
 def i_click_on_the_login_btn(context):
-    login_button = context.driver.find_element(By.XPATH, LOGIN_BUTTON_LOCATOR)
+    login_button = wait_for_element(driver=context.driver, wait_time=5,
+                                    locator=PageLocators.LOGIN_BUTTON_LOCATOR)
     login_button.click()
 
 

@@ -32,4 +32,4 @@ Feature: Login Page
 
     Examples:
       | email                     | password   |
-      | invalidemail@123email.com | invalidpwd |
+      | invalidemail@123?email.com | invalidpwd |
