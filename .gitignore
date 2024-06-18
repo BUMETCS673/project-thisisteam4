@@ -1,0 +1,5 @@
+/.idea
+/code/automated_testing/features/logs
+/code/automated_testing/features/reports
+/code/automated_testing/node_modules/
+*.pyc
