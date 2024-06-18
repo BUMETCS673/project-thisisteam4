@@ -12,7 +12,7 @@
     "jest-test": "jest",
     "test": "jest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
