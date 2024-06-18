@@ -48,11 +48,11 @@ Please remember, if you want to slow down test execution to review details, just
 you're using.
 
 ```
-Then I wait for "10" seconds
+Then I wait for "5" seconds
 ```
 
 To run specific feature files:
-
+~~~~
 ```sh
 python code/automated_testing/features/runner.py landing_page.feature
 ```
