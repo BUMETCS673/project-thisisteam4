@@ -52,12 +52,12 @@ const Navbar = () => {
           </li>
           <li className="navbar-item">
             <NavLink
-              to="/dashboard"
+              to="/home"
               className={({ isActive }) =>
                 isActive ? "navbar-link active" : "navbar-link"
               }
             >
-              DASHBOARD
+              HOME
             </NavLink>
           </li>
           {(isAuthenticated || isLoading) && (

@@ -1,22 +1,22 @@
 import './ProjectCard.css';
 const ProjectCard = ({ project, taskCount}) => {
+  console.log('Rendering ProjectCard for:', project.projectname);
   return (
     <section className="projectCard" role="article">
       <header>
+        <section>
         <h3>{project.projectname}</h3>
+        <h6>PROJECT TYPE: {project.type}</h6>
+        </section>
         <div>
           <ul>
-            {' '}
-            {/* {project.groupMembers.map((member, index) => (
-              <li key={index}>{member.charAt(0)}</li>
-            ))} */}
-            <li>{project.owner_id}</li>
+            <li>{project.owner_id.charAt(0)}</li>
           </ul>
         </div>
       </header>
       <main>
         <div className="scrollable-content">
-          <p>PROJECT TYPE: {project.type}</p>
+        
           <p>{project.description}</p>
         </div>
       </main>

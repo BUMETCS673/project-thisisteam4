@@ -21,6 +21,10 @@
 }
 .projectCard header h3 {
   font-weight: 700;
+  margin-bottom: 0;
+}
+.projectCard header h6 {
+  margin-top: 10%;
 }
 .projectCard header div {
   display: flex;
@@ -54,7 +58,23 @@
 .projectCard main {
   height: 100%;
   overflow-y: auto;
+  
 }
 .projectCard main .scrollable-content {
   padding-right: 20px;
+  padding-left:2% ;
+}
+/* .projectCard main, .projectCard footer {
+  padding-left:2% ;
+} */
+
+.projectCard footer {
+  text-align: center;
+
+}
+.projectCard footer p {
+  border: solid  var(--color-bar) 2px;
+  border-left: 0;
+  border-right: 0;
+  border-bottom:0;
 }

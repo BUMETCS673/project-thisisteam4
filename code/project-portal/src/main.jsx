@@ -13,6 +13,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import CallbackPage from "./callback.jsx";
+import Home from "./pages/Home/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,14 +29,6 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <Dashboard />, //"/dashboard"
       },
-      // {
-      //   path: 'login',
-      //   element: <Login />,
-      // },
-      // {
-      //   path: 'signup',
-      //   element: <Registration />,
-      // },
       {
         path: "auth",
         element: <Authentication />,
@@ -48,10 +41,6 @@ const router = createBrowserRouter([
         path: "me",
         element: <Profile />, //"/me"
       },
-      // {
-      //   path: 'project/:id',
-      //   element: <Project />, //"/project/:id"
-      // },
       {
         path: "project/",
         element: <Project />, //"/project/"
@@ -60,6 +49,10 @@ const router = createBrowserRouter([
         path: "callback", // Added this route for Auth0 callback
         element: <CallbackPage />,
       },
+      {
+        path:"home",
+        element:<Home/>
+      }
     ],
   },
 ]);

@@ -16,8 +16,6 @@ const TaskForm = ({ onAddTask }) => {
   };
 
   return (
-    <li >
-      
       <form onSubmit={handleSubmit} className="new-task-form">
         {/* <div> */}
         <h4><b>Add New Task</b></h4>
@@ -38,7 +36,6 @@ const TaskForm = ({ onAddTask }) => {
       {/* </div> */}
         <button type="submit">Add Task</button>
       </form>
-    </li>
   );
 };
 

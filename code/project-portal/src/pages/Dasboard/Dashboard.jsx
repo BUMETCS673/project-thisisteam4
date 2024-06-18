@@ -3,30 +3,28 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import ProjectModal from '../../components/ProjectModal/ProjectModal';
-//import { getAllProjects } from '../../utils/actions';
+
 
 const Dashboard = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projectTasks, setProjectTasks] = useState({});
+  console.log("dashboard")
 
-  // useEffect(() => {
-    // Fetch project data when the component mounts
-    // const fetchProjects = () => {
-    //   try {
-    //     const projectData = getAllProjects();
-    //     console.log(projectData) //results in promise pending because of CORS
-    //     setAllProjects(projectData);
-    //   } catch (error) {
-    //     setError('Failed to fetch projects. Please try again later.');
-    //     console.error('Error fetching projects:', error);
-    //   }
-    // };
+  useEffect(() => {
+   // Fetch project data when the component mounts
+    const fetchProjects = () => {
+      try {
+        const projectData = getAllProjects();
+        console.log(projectData) //results in promise pending because of CORS
+        setAllProjects(projectData);
+      } catch (error) {
+        setError('Failed to fetch projects. Please try again later.');
+        console.error('Error fetching projects:', error);
+      }
+    };
 
-  //   fetchProjects();
-  // }, []);
-
-  
-
+    fetchProjects();
+  }, []);
   // this is where we would fetch the project data using fetch request
   const projects = [
     {projectname:	"Project Alpha",

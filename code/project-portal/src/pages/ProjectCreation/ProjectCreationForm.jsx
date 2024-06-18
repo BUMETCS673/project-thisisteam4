@@ -2,41 +2,63 @@ import React, { useState } from 'react';
 import './ProjectCreationForm.css';
 import strings from '../../utils/strings';
 
-function createNewProject() {
-  return {
-    name: '',
-    owner: '',
-    members: '',
-    description: '',
-    creationDate: '',
-    type: '',
-    status: '',
-    completionDate: '',
-  };
-}
-
 function ProjectCreationForm({ onSubmit }) {
-  const [project, setProject] = useState(createNewProject());
+  const [project, setProject] = useState({
+  projectname: '',
+  owner_id: '',
+  description: '',
+  created_on: '',
+  updated_on: '',
+  members:'',
+  status: '',
+  type: '',
+  active: true,
+  projectid: '',
+  tasks: []
+});
 
-  const handleChange = (e) => {
-    setProject({ ...project, [e.target.name]: e.target.value });
+const handleChange = (e) => {
+  setProject({ ...project, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const projects = JSON.parse(localStorage.getItem('projects')) || [];
+  const newProject = {
+    ...project,
+    projectid: `proj_${projects.length + 1}`, // Generate project id
+    created_on: new Date().getTime(),
+    updated_on: new Date().getTime(),
+    tasks: [], // Initialize tasks as an empty array
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(project);
-    onSubmit && onSubmit(project);
+  projects.push(newProject);
+  localStorage.setItem('projects', JSON.stringify(projects));
+  // Clear form fields after submission
+  setProject({
+    projectname: '',
+    owner_id: '',
+    description: '',
+    created_on: '',
+    updated_on: '',
+    members:'',
+    status: '',
+    type: '',
+    active: true,
+    projectid: '',
+    tasks: [],
+  });
+   window.location.href = "/home";
   };
 
   return (
     <form onSubmit={handleSubmit} className="form-grid">
       <label>
         {strings.projectName}
-        <input type="text" name="name" onChange={handleChange} />
+        <input type="text" name="projectname" onChange={handleChange} />
       </label>
       <label>
         {strings.projectOwner}
-        <input type="text" name="owner" onChange={handleChange} />
+        <input type="text" name="owner_id" onChange={handleChange} />
       </label>
       <label>
         {strings.projectMembers}
