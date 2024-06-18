@@ -3,7 +3,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import ProjectModal from '../../components/ProjectModal/ProjectModal';
-//import { getAllProjects } from '../../utils/actions';
+
 
 const Dashboard = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -25,9 +25,6 @@ const Dashboard = () => {
 
     fetchProjects();
   }, []);
-
-  
-
   // this is where we would fetch the project data using fetch request
   const projects = [
     {projectname:	"Project Alpha",
