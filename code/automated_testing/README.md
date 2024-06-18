@@ -44,6 +44,13 @@ path `C:/Program Files/Google/Chrome/Application`, named like this:`chrome.exe`
 
 ## Running Tests
 
+Please remember, if you want to slow down test execution to review details, just add this line to the feature file
+you're using.
+
+```
+Then I wait for "10" seconds
+```
+
 To run specific feature files:
 
 ```sh
