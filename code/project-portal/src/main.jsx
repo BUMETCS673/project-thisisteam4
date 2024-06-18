@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       }
     ],
   },
-]);
+],{ basename: "/project-thisisteam4" });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
