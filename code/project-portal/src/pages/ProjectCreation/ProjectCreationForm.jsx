@@ -1,57 +1,64 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import './ProjectCreationForm.css';
 import strings from '../../utils/strings';
 
-function createNewProject() {
-  return {
-=======
-import "./ProjectCreationForm.css"
-
-
-function ProjectCreationForm() {
-  const [project, setProject] = useState({
->>>>>>> main
-    name: '',
-    owner: '',
-    members: '',
-    description: '',
-    creationDate: '',
-    type: '',
-    status: '',
-<<<<<<< HEAD
-    completionDate: '',
-  };
-}
-
 function ProjectCreationForm({ onSubmit }) {
-  const [project, setProject] = useState(createNewProject());
-=======
-    completionDate: ''
-  });
+  const [project, setProject] = useState({
+  projectname: '',
+  owner_id: '',
+  description: '',
+  created_on: '',
+  updated_on: '',
+  members:'',
+  status: '',
+  type: '',
+  active: true,
+  projectid: '',
+  tasks: []
+});
 
->>>>>>> main
+const handleChange = (e) => {
+  setProject({ ...project, [e.target.name]: e.target.value });
+};
 
-  const handleChange = (e) => {
-    setProject({ ...project, [e.target.name]: e.target.value });
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const projects = JSON.parse(localStorage.getItem('projects')) || [];
+  const newProject = {
+    ...project,
+    projectid: `proj_${projects.length + 1}`, // Generate project id
+    created_on: new Date().getTime(),
+    updated_on: new Date().getTime(),
+    tasks: [], // Initialize tasks as an empty array
   };
-
-<<<<<<< HEAD
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(project);
-    onSubmit && onSubmit(project);
+  projects.push(newProject);
+  localStorage.setItem('projects', JSON.stringify(projects));
+  // Clear form fields after submission
+  setProject({
+    projectname: '',
+    owner_id: '',
+    description: '',
+    created_on: '',
+    updated_on: '',
+    members:'',
+    status: '',
+    type: '',
+    active: true,
+    projectid: '',
+    tasks: [],
+  });
+   window.location.href = "/home";
   };
 
   return (
     <form onSubmit={handleSubmit} className="form-grid">
       <label>
         {strings.projectName}
-        <input type="text" name="name" onChange={handleChange} />
+        <input type="text" name="projectname" onChange={handleChange} />
       </label>
       <label>
         {strings.projectOwner}
-        <input type="text" name="owner" onChange={handleChange} />
+        <input type="text" name="owner_id" onChange={handleChange} />
       </label>
       <label>
         {strings.projectMembers}
@@ -80,56 +87,8 @@ function ProjectCreationForm({ onSubmit }) {
       <button type="submit" className="submit-button">
         {strings.createProjectButton}
       </button>
-=======
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(project);
-  };
-
-
-  return (
-    <form onSubmit={handleSubmit} className="form-grid">
-      <label>
-        Project Name:
-        <input type="text" name="name" onChange={handleChange} />
-      </label>
-      <label>
-        Project Owner:
-        <input type="text" name="owner" onChange={handleChange} />
-      </label>
-      <label>
-        Project Members:
-        <input type="text" name="members" onChange={handleChange} />
-      </label>
-      <label>
-        Description:
-        <textarea name="description" onChange={handleChange} />
-      </label>
-      <label>
-        Date of Creation:
-        <input type="date" name="creationDate" onChange={handleChange} />
-      </label>
-      <label>
-        Type of Project:
-        <input type="text" name="type" onChange={handleChange} />
-      </label>
-      <label>
-        Status:
-        <input type="text" name="status" onChange={handleChange} />
-      </label>
-      <label>
-        Date of Completion:
-        <input type="date" name="completionDate" onChange={handleChange} />
-      </label>
-      <button type="submit">Create Project</button>
->>>>>>> main
     </form>
   );
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 export default ProjectCreationForm;
