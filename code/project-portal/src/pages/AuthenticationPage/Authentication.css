@@ -1,0 +1,54 @@
+.auth-page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 60vh;
+  align-items: center;
+  gap: 0;
+}
+
+.pp-heading {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: radial-gradient(circle, #7a0be0 10%, #ce93eb 25%, #f1e5ff 50%);
+  border: none;
+  border-radius: 50%;
+}
+.pp-heading p {
+  font-size: 500%;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-page-form-area {
+  background-color: white;
+  height: 100%;
+  align-items: center;
+  border-radius: 15px;
+  width: 30%;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.signin-signup {
+  margin-bottom: 15%;
+}
+.auth-page-form-area p {
+  display: inline;
+  margin: 10px;
+  font-weight: 700;
+  padding-bottom: 2px;
+}
+
+.auth-page-form-area p.active {
+  border-bottom: 2px solid black;
+}

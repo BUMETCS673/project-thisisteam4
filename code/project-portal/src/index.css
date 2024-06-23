@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Display:wght@100..900&display=swap');
+:root {
+  /* Font families */
+  --font-primary: 'Barlow Semi Condensed', sans-serif;
+  --font-h1: 'Big Shoulders Display', sans-serif;
+  --font-h2-h4: 'Barlow Semi Condensed', sans-serif;
+  --font-paragraph: 'Barlow Condensed', sans-serif;
+
+  /* Font sizes */
+  --font-size-small: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-large: 1.25rem;
+  --font-size-xlarge: 1.5rem;
+
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Colors */
+
+  --color-primary: #8e6dbf;
+  --color-secondary: #231350; /* for button and bar background */
+  --color-bar: #de9ddf;
+  --color-background: #f1e5ff;
+  --color-text-background: #000000;
+  --color-text: #231350;
+  --color-text-light: #ffffff;
+  --color-taskbar: #756c68;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1 {
+  font-family: var(--font-h1);
+  font-size: var(--font-size-xlarge);
+  font-weight: var(--font-weight-bold);
+}
+
+h2,
+h3,
+h4 {
+  font-family: var(--font-h2-h4);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Paragraphs */
+p {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-light);
+  background-color: var(--color-secondary);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+}

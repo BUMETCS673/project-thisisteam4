@@ -1,0 +1,80 @@
+.projectCard {
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-text-light);
+  padding-bottom: 20px;
+  margin-bottom: 20%;
+  width: 300px;
+  height: 275px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.projectCard header {
+  display: flex;
+  padding: 1% 3%;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  justify-content: space-between;
+}
+.projectCard header h3 {
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.projectCard header h6 {
+  margin-top: 10%;
+}
+.projectCard header div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.projectCard header div h6 {
+  margin: 0;
+  padding: 0;
+}
+.projectCard header div ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  width: 110%;
+  margin: 0;
+  padding: 0;
+}
+.projectCard header div ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.projectCard main {
+  height: 100%;
+  overflow-y: auto;
+  
+}
+.projectCard main .scrollable-content {
+  padding-right: 20px;
+  padding-left:2% ;
+}
+/* .projectCard main, .projectCard footer {
+  padding-left:2% ;
+} */
+
+.projectCard footer {
+  text-align: center;
+
+}
+.projectCard footer p {
+  border: solid  var(--color-bar) 2px;
+  border-left: 0;
+  border-right: 0;
+  border-bottom:0;
+}

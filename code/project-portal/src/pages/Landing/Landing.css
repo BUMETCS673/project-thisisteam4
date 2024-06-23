@@ -1,0 +1,26 @@
+.landing-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.text-image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.text-content {
+  flex: 0 0 50%;
+}
+
+.image-content {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.big-logo {
+  width: 100%;
+  height: auto;
+}
